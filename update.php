@@ -1,6 +1,7 @@
 <?php
-
 include 'conn.php';
+session_start();
+ 
 
 $id = $_GET['upld_id'];
 
@@ -9,7 +10,26 @@ $query = mysqli_query($conn, $select_data);
 $fetch_array = mysqli_fetch_assoc($query);
 $strToArr = explode(', ', $fetch_array['hobby']);
 
+ 
+function value($col_name, $name)
+{
+    global $fetch_array;
+    if (!isset($_POST['submit'])) {
+        echo $fetch_array[$col_name];
+    } else {
+        echo $_POST[$name];
+    }
+}
 
+function passwordValue($col_name, $name)
+{
+    global $fetch_array;
+    if (!isset($_POST['submit'])) {
+        echo base64_decode($fetch_array[$col_name]);
+    } else {
+        echo $_POST[$name];
+    }
+}
 
 function arrChecked($value, $show)
 {
@@ -29,10 +49,11 @@ function checked($col_name, $value, $show)
         echo $show;
     }
 }
-
-
+$fNameErr = $lNameErr  = $ageErr = $genErr = $depErr = $dojErr = $salaryErr = $emailErr = $passwordErr = $cPasswordErr = $hobbyErr = $fileErr = '';
 
 if (isset($_POST['submit'])) {
+
+
 
     if (empty($_POST['fName'])) {
         $fNameErr = 'first name should be not empty';
@@ -83,7 +104,6 @@ if (isset($_POST['submit'])) {
     } else {
 
 
-
         $firstName = $_POST['fName'];
         $lastName = $_POST['lName'];
         $age = $_POST['age'];
@@ -115,7 +135,6 @@ if (isset($_POST['submit'])) {
         }
     }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -125,35 +144,42 @@ if (isset($_POST['submit'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Assets/bootstrap-4.6.1-dist/css/bootstrap.min.css">
-    <title>Update</title>
+    <link rel="stylesheet" href="./assets/./bootstrap-4.6.1-dist/./css/./bootstrap.min.css">
+    <link rel="stylesheet" href="Assets/CSS/style.css">
+    <title>welcome user </title>
 </head>
 
 <body>
-    <?php include 'navbar.php'; ?>
+ 
 
-    <div class="container mt-5 bg-light w-100 ">
-        <form method="post" enctype="multipart/form-data">
-            <h1 class="text-center">Update</h1>
+
+
+  
+    <div class="container     w-100 ">
+        <form method="post" class="bg-light mt-5  p-3" enctype="multipart/form-data">
+            <h1 class="text-center">Update Your Details </h1>
             <div class="row   ">
 
                 <div class="col-lg-6  ">
 
                     <div class="form-group">
                         <label for="" class="">First Name</label>
-                        <input class="form-control" type="text" name="fName" value="<?php echo $fetch_array['firstName']; ?>">
+                        <input class="form-control" type="text" name="fName" value="<?php value('firstName', 'fName');  ?>">
+                        <small class="red"><?php echo $fNameErr; ?></small>
                     </div>
 
 
                     <div class="form-group">
                         <label for="">Last Name</label>
-                        <input class="form-control" type="text" name="lName" value="<?php echo $fetch_array['lastName']; ?>">
+                        <input class="form-control" type="text" name="lName" value="<?php value('lastName', 'lName'); ?>">
+                        <small class="red"><?php echo $lNameErr; ?></small>
                     </div>
 
 
                     <div class="form-group">
                         <label for="">Age</label>
-                        <input type="text" class="form-control" name="age" value="<?php echo $fetch_array['age']; ?>">
+                        <input type="text" class="form-control" name="age" value="<?php value('age', 'age'); ?>">
+                        <small class="red"><?php echo $ageErr; ?></small>
                     </div>
 
                     <label for="">Gender
@@ -185,40 +211,45 @@ if (isset($_POST['submit'])) {
                         </label>
                     </div>
 
-
-
-
                     <div class="form-group">
                         <label for="">Date Of Join</label>
-                        <input type="date" class="form-control" name="doj" value="<?php echo $fetch_array['date_of_join']; ?>">
+                        <input type="date" class="form-control" name="doj" value="<?php value('date_of_join', 'doj'); ?>">
+                        <small class="red"><?php echo $dojErr; ?></small>
                     </div>
 
                     <div class="form-group">
                         <label for="">Salary</label>
-                        <input type="text" class="form-control" name="salary" value="<?php echo $fetch_array['salary']; ?>">
+                        <input type="text" class="form-control" name="salary" value="<?php value('salary', 'salary'); ?>">
+                        <small class="red"><?php echo $salaryErr; ?></small>
                     </div>
                 </div>
                 <div class="col-lg-6  ">
 
 
 
+
+
+
                     <div class="form-group">
                         <label for="">Email</label>
-                        <input type="text" class="form-control" name="email" value="<?php echo $fetch_array['email']; ?>">
+                        <input type="text" class="form-control" name="email" value="<?php value('email', 'email'); ?>">
+                        <small class="red"><?php echo $emailErr; ?></small>
                     </div>
 
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="text" class="form-control" name="password" id="password" value="<?php echo base64_decode($fetch_array['password']); ?>">
+                        <input type="text" class="form-control" name="password" id="password" value="<?php passwordValue('password', 'password'); ?>">
+                        <small class="red"><?php echo $passwordErr; ?></small>
                     </div>
 
                     <div class="form-group">
                         <label for="cPassword">Confirm Password</label>
-                        <input type="text" class="form-control" name="cPassword" id="cPassword" value="<?php echo base64_decode($fetch_array['confirm_password']); ?>">
+                        <input type="text" class="form-control" name="cPassword" id="cPassword" value="<?php passwordValue('confirm_password', 'cPassword'); ?>">
+                        <small class="red"><?php echo $cPasswordErr; ?></small>
                     </div>
 
                     <label for=""> Hobby
-
+                    <small class="red"><?php echo $hobbyErr; ?></small>
                         <div class="form-check">
                             <input type="checkbox" class="form-check-input" name="hobby[]" id="hobby" value="reading" <?php arrChecked('reading', 'checked'); ?>>
                             <label for="hobby" class="form-check-label">reading</label>
@@ -238,23 +269,21 @@ if (isset($_POST['submit'])) {
                             <input type="checkbox" class="form-check-input" name="hobby[]" id="hobby" value="gaming" <?php arrChecked('gaming', 'checked'); ?>>
                             <label for="hobby" class="form-check-label">Gaming</label>
                         </div>
-
+ 
                     </label>
 
 
-
-                    <div class="custom-file">
-
-                        <!-- <label for="file" class="custom-file-label">choose file</label> -->
-                        <input type="file" class="" name="file" id="file" value="ja.png">
+                    <div>
+                        <img src="<?php echo $fetch_array['photo']; ?>" width="120px" alt="">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlFile1">Upload Your Photo</label>
+                        <small class="red"><?php echo $fileErr; ?></small>
+                        <input type="file" name="file" class="form-control-file" id="exampleFormControlFile1">
                     </div>
 
-
                     <input type="submit" name="submit" value='Update' class="btn btn-primary">
-                    <input type="reset" name="submit" value="Reset" class="btn btn-warning">
-
-                    <a href="dashboard.php " class="btn btn-info"> back
-                    </a>
+                    <a href="dashboard.php" class="btn btn-warning">Back </a>
 
 
                 </div>
@@ -262,6 +291,8 @@ if (isset($_POST['submit'])) {
         </form>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 </body>
 
 </html>

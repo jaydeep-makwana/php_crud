@@ -46,7 +46,7 @@ function arrChecked($name, $value, $show)
 </head>
 
 <body>
-    <?php include 'navbar.php'; ?>
+     
 
     <div class="container mt-5 bg-light w-100 ">
         <form method="post" enctype="multipart/form-data">

@@ -177,8 +177,12 @@ if (isset($_POST['add_user'])) {
         $fNameErr = 'first name should be not empty';
     } elseif (!preg_match("/^[a-zA-Z]*$/", $_POST['fName'])) {
         $fNameErr = 'only enter alphabet ';
+    } elseif (empty($_POST['lName'])) {
+        $lNameErr = 'last name shold be not empty ';
     } elseif (!preg_match("/^[a-zA-Z]*$/", $_POST['lName'])) {
         $lNameErr = '* only enter alphabet ';
+    } elseif (empty($_POST['age'])) {
+        $ageErr = 'age shold be not empty ';
     } elseif (!preg_match("/\d/", $_POST['age'])) {
         $ageErr = 'age must be in digit';
     } elseif ($_POST['age'] < 18) {
@@ -197,6 +201,8 @@ if (isset($_POST['add_user'])) {
         $salaryErr = 'salary must be in digit';
     } elseif ($_POST['salary'] < 1) {
         $salaryErr = 'salary shold not be less than 1 ';
+    } elseif (!preg_match("/\d/", $_POST['salary'])) {
+        $salaryErr = 'salary must be in digit';
     } elseif (empty($_POST['email'])) {
         $emailErr = 'email should be not empty';
     } elseif (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
