@@ -149,14 +149,36 @@ if (isset($_POST['submit'])) {
     <title>welcome user </title>
 </head>
 
-<body>
+<body class="admin-bg">
  
+<nav class="navbar navbar-expand-lg navbar-dark  ">
+        <img src="./Assets/./image/ms.png" width="100px" alt="">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse h4" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active ml-4">
+                    <a class="nav-link" href="admin_welcome.php">Home</a>
+                </li>
+                <li class="nav-item active ml-4">
+                    <a class="nav-link" href="addUser.php">Add Users</a>
+                </li>
+                <li class="nav-item active ml-4">
+                    <a class="nav-link" href="dashboard.php">Back</a>
+                </li>
 
+            </ul>
+
+        </div>
+
+
+    </nav>
 
 
   
     <div class="container     w-100 ">
-        <form method="post" class="bg-light mt-5  p-3" enctype="multipart/form-data">
+        <form method="post" class="bg-black mt-5  p-3" enctype="multipart/form-data">
             <h1 class="text-center">Update Your Details </h1>
             <div class="row   ">
 
