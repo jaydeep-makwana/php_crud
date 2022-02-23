@@ -14,7 +14,7 @@ if (!isset($_SESSION['aid'])) {
 
 $selectTable = "SELECT * FROM user";
 $result = mysqli_query($conn, $selectTable);
-
+// $myData = mysqli_fetch_assoc($result);
 
 if (!$result) {
     echo mysqli_error($conn);
@@ -98,15 +98,40 @@ if (!$result) {
                         <td class="table-light"><?php echo $myData['hobby']; ?> </td>
                         <td class="table-light"> <img src="<?php echo $myData['photo']; ?>" alt="Network Error" hright='100px' width='100px'> </td>
                         <td class="table-warning"><a href="update.php?upld_id=<?php echo $myData['id']; ?>"><button class="btn btn-warning">Update</button></a></td>
-                        <td class="table-danger"><a href="delete.php?del_id=<?php echo $myData['id']; ?>"><button class="btn btn-danger">DELETE</button></a></td>
+                        <td class="table-danger"><button   class="btn btn-danger"  data-toggle="modal" data-target="#exampleModal">DELETE</button></td>
+                        <!-- delete Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                              Do you really want to delete record?  
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">cancel</button>
+                                <a href="delete.php?del_id=<?php echo $myData['id']; ?>"><button class="btn btn-danger">DELETE</button></a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                     </tr>
-                <?php } ?>
-            </tbody>
-
-
-
-        </table>
+                    <?php } ?>
+                </tbody>
+                
+                
+                
+            </table>
     </div>
+
+ 
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 </body>
 
 </html>

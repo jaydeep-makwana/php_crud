@@ -44,7 +44,7 @@ $welcome = "hello " . $myData['firstName'] . ", Welcome!!"
 
 </head>
 
-<body class="admin_welcome">
+<body class="user_welcome">
     <nav class="navbar navbar-expand-lg navbar-dark  ">
         <img src="./Assets/./image/ms.png" width="100px" alt="">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
