@@ -9,11 +9,7 @@ if (!isset($_SESSION['aid'])) {
 if (!isset($_SESSION['aid'])) {
     $_SESSION['aid'] = $_COOKIE['aid'];
 }
-
-$id =  $_SESSION['aid'];
-$findAdmnTbl = "SELECT * FROM admin WHERE id = $id";
-$rslt = mysqli_query($conn, $findAdmnTbl);
-$admnArr  = mysqli_fetch_assoc($rslt);
+ 
 
 
 $selectTable = "SELECT * FROM user";
@@ -45,13 +41,22 @@ if (!$result) {
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+        <div class="collapse navbar-collapse h4" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active ml-4">
+                    <a class="nav-link" href="admin_welcome.php">Home</a>
+                </li>
+                <li class="nav-item active ml-4">
+                    <a class="nav-link" href="addUser.php">Add Users</a>
+                </li>
+
+            </ul>
+
+        </div>
 
 
     </nav>
 
-    <h1>Hello Admin <span class="text-primary"> <?php echo $admnArr['userName']; ?> </span>, Welcome!!!</h1>
-    <a href="admin_logout.php" class="btn btn-danger">Log out</a>
-    <a href="addUser.php" class="btn btn-primary">Add Employee</a>
 
 
     <div class="table-responsive ">

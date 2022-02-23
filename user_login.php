@@ -50,10 +50,10 @@ function setValue($value)
     <title>User_Login</title>
 </head>
 
-<body>
+<body class="user-bg">
     <?php include 'navbar.php'; ?>
 
-    <div class="container mt-5 bg-light col-lg-3">
+    <div class="container mt-5 bg-black col-lg-3">
 
         <form method="post">
             <h1 class="text-center">Log in</h1>

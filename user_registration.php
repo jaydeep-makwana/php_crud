@@ -45,10 +45,10 @@ function arrChecked($name, $value, $show)
     <title>Register</title>
 </head>
 
-<body>
+<body class="user-bg">
     <?php include 'navbar.php'; ?>
 
-    <div class="container mt-5  bg-light   w-100 ">
+    <div class="container mt-5  bg-black   w-100 ">
         <form method="post" enctype="multipart/form-data">
             <h1 class="text-center">Register</h1>
             <div class="row   ">

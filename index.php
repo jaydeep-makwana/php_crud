@@ -31,13 +31,13 @@ if(isset($_COOKIE['aid'])){
 
 </head>
 
-<body>
+<body class="home-bg">
      <?php include 'navbar.php'; ?>
-    <div class="container mx-auto text-center  row main">
+    <div class="container mx-auto text-center   row main">
         
 
             <div class="col-lg-6 ">
-                <div class="card  mx-auto border border-warning p-3" style="width: 18rem;">
+                <div class="card  mx-auto border border-warning p-3 " style="width: 18rem;">
                     <img src="./Assets/./image/./user-icon-free-18.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">USERS</h5>

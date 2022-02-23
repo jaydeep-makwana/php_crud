@@ -38,7 +38,7 @@ if (!$myData) {
     <title>Document</title>
 </head>
 
-<body class="user_welcome">
+<body class="user-bg">
 
     <nav class="navbar navbar-expand-lg navbar-dark  ">
         <img src="./Assets/./image/ms.png" width="100px" alt="">

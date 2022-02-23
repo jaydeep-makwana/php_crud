@@ -3,15 +3,15 @@
 include 'conn.php';
 session_start();
 
-if (!isset($_SESSION['id'])) {
-    header('location:user_login.php');
+if (!isset($_SESSION['aid'])) {
+    header('location:admin_login.php');
 }
 
-if (!isset($_SESSION['id'])) {
-    $_SESSION['id'] = $_COOKIE['id'];
+if (!isset($_SESSION['aid'])) {
+    $_SESSION['aid'] = $_COOKIE['aid'];
 }
-$id = $_SESSION['id'];
-$searchTable = "SELECT * FROM user WHERE id = $id";
+$id = $_SESSION['aid'];
+$searchTable = "SELECT * FROM admin WHERE id = $id";
 $rslt = mysqli_query($conn, $searchTable);
 
 
@@ -22,7 +22,7 @@ $myData = mysqli_fetch_assoc($rslt);
 if (!$myData) {
     echo mysqli_error($conn);
 }
-$welcome = "hello " . $myData['firstName'] . ", Welcome!!"
+$welcome = "hello " . $myData['userName'] . ", Welcome!!"
 ?>
 
 
@@ -53,14 +53,16 @@ $welcome = "hello " . $myData['firstName'] . ", Welcome!!"
         <div class="collapse navbar-collapse h4" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active ml-4">
-                    <a class="nav-link" href="userData.php">Account Details</a>
+                    <a class="nav-link" href="dashboard.php">Dashboard</a>
                 </li>
 
             </ul>
             <div class="d-flex">
 
-                <a href="user_logout.php" class="btn btn-danger l-0">Log out</a>
-            </div>
+<a href="admin_logout.php" class="btn btn-danger l-0">Log out</a>
+</div>
+</div>
+
         </div>
 
     </nav>
@@ -69,7 +71,6 @@ $welcome = "hello " . $myData['firstName'] . ", Welcome!!"
 
         <h1 class="text-white p-5"> <?php echo $welcome;
                                     ?> </h1>
-        <h3 class="m-5 text-justify text-center">Microsoft Corporation is a company that makes computer software and video games. Bill Gates and Paul Allen founded the company in 1975. Microsoft makes Microsoft Windows, Microsoft Office (including Microsoft Word), Edge, MSN and Xbox, among others. Most Microsoft programs cannot be downloaded for free - people have to buy them in a shop or online. Some products (like the Windows operating system) are often already installed when people buy a new computer.</h3>
     </div>
 
 

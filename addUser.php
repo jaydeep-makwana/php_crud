@@ -45,10 +45,10 @@ function arrChecked($name, $value, $show)
     <title>Add User</title>
 </head>
 
-<body>
+<body class="admin-bg">
      
 
-    <div class="container mt-5 bg-light w-100 ">
+    <div class="container mt-5 bg-black w-100 ">
         <form method="post" enctype="multipart/form-data">
             <h1 class="text-center">Add User</h1>
             <div class="row   ">

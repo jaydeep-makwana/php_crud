@@ -28,7 +28,7 @@ if (isset($_POST['submit'])) {
     if ($uname == $fetch_array['userName'] && $pass == $fetch_array['password']  ) {
         $_SESSION['aid'] = $fetch_array['id'];
         setcookie('aid',$fetch_array['id'],time() + 60*10);
-        header('location:dashboard.php');
+        header('location:admin_welcome.php');
         
     }
       
@@ -57,10 +57,10 @@ function setValue($value)
     <title>Admin_Login</title>
 </head>
 
-<body>
+<body class="admin-bg">
 <?php include 'navbar.php'; ?>
 
-    <div class="container mt-5 p-3 bg-light col-lg-3">
+    <div class="container mt-5 p-3 bg-black col-lg-3">
 
         <form method="post">
             <h1 class="text-center">Log in</h1>
