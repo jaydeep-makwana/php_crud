@@ -1,10 +1,14 @@
 <?php
+include('insert.php');
 session_start();
-if (!isset($_SESSION['aid']) || !isset($_COOKIE['aid'])) {
+
+if (!isset($_SESSION['aid'])) {
     header('location:admin_login.php');
 }
 
-include('insert.php');
+if (!isset($_COOKIE['aid'])) {
+    header('location:admin_login.php');
+}
 
 function setValue($value)
 {

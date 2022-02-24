@@ -10,6 +10,7 @@ if (!isset($_SESSION['id'])) {
 if (!isset($_SESSION['id'])) {
     $_SESSION['id'] = $_COOKIE['id'];
 }
+
 $id = $_SESSION['id'];
 $searchTable = "SELECT * FROM user WHERE id = $id";
 $rslt = mysqli_query($conn, $searchTable);

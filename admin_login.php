@@ -1,10 +1,15 @@
  <?php
+    include 'conn.php';
     session_start();
-    if (isset($_SESSION['aid']) || isset($_COOKIE['aid'])) {
-        header('location:dashboard.php');
+
+    if (isset($_SESSION['aid'])) {
+        header('location:admin_login.php');
+    }
+    
+    if (isset($_COOKIE['aid'])) {
+        header('location:admin_login.php');
     }
 
-    include 'conn.php';
     $selectTable = "SELECT * FROM admin ";
     $tblQuery = mysqli_query($conn, $selectTable);
 

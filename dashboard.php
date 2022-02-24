@@ -1,6 +1,6 @@
 <?php
-session_start();
 include 'conn.php';
+session_start();
 
 if (!isset($_SESSION['aid'])) {
     header('location:admin_login.php');
@@ -14,7 +14,6 @@ if (!isset($_SESSION['aid'])) {
 
 $selectTable = "SELECT * FROM user";
 $result = mysqli_query($conn, $selectTable);
-// $myData = mysqli_fetch_assoc($result);
 
 if (!$result) {
     echo mysqli_error($conn);

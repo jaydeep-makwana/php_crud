@@ -10,6 +10,7 @@ if (!isset($_SESSION['aid'])) {
 if (!isset($_SESSION['aid'])) {
     $_SESSION['aid'] = $_COOKIE['aid'];
 }
+
 $id = $_SESSION['aid'];
 $searchTable = "SELECT * FROM admin WHERE id = $id";
 $rslt = mysqli_query($conn, $searchTable);

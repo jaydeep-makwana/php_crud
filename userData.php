@@ -8,7 +8,6 @@ if (!isset($_SESSION['id'])) {
 
 if (!isset($_SESSION['id'])) {
     $_SESSION['id'] = $_COOKIE['id'];
-    $_SESSION['welcome'] = $_COOKIE['welcome'];
 }
 $id = $_SESSION['id'];
 $searchTable = "SELECT * FROM user WHERE id = $id";
