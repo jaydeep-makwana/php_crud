@@ -9,21 +9,36 @@ if (isset($_SESSION['id'])) {
 if (isset($_COOKIE['id'])) {
     header('location:user_welcome.php');
 }
-if (isset($_POST['submit'])) {
 
+$emailErr = $passwordErr = '';
+
+if (isset($_POST['submit'])) {
     $email = $_POST['email'];
     $pass = $_POST['password'];
 
-    $selectTable = "SELECT * FROM user WHERE email ='$email'";
-    $query = mysqli_query($conn, $selectTable);
-    $num_rows = mysqli_num_rows($query);
-    $arr = mysqli_fetch_assoc($query);
-    if ($num_rows) {
-        if ($arr['password'] == base64_encode($pass)) {
+    if (empty($email)) {
+        $emailErr = " email required";
+    } elseif (empty($pass)) {
+        $passwordErr = "password required";
+    } else {
 
-            $_SESSION['id'] = $arr['id'];
-            setcookie('id', $_SESSION['id'], time() + 60*10);
-            header('location:user_welcome.php');
+
+
+        $selectTable = "SELECT * FROM user WHERE email ='$email'";
+        $query = mysqli_query($conn, $selectTable);
+        $num_rows = mysqli_num_rows($query);
+        $arr = mysqli_fetch_assoc($query);
+        if ($num_rows) {
+            if ($arr['password'] == base64_encode($pass)) {
+
+                $_SESSION['id'] = $arr['id'];
+                setcookie('id', $_SESSION['id'], time() + 60 * 10);
+                header('location:user_welcome.php');
+            } else {
+                $passwordErr = "invalid password";
+            }
+        } else {
+            $emailErr = "invalid email";
         }
     }
 }
@@ -61,12 +76,14 @@ function setValue($value)
             <div class="form-group">
                 <label for="" class="">Email</label>
                 <input class="form-control" type="text" name="email" value="<?php setValue('email'); ?>">
+                <small class="red"><?php echo $emailErr; ?></small>
             </div>
 
 
             <div class="form-group">
                 <label for="">Password</label>
                 <input class="form-control" type="text" name="password" value="<?php setValue('password'); ?>">
+                <small class="red"><?php echo $passwordErr; ?></small>
             </div>
 
             <input type="submit" name="submit" value='Log in' class="btn btn-primary">
