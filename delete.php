@@ -1,6 +1,6 @@
 <?php
 
-include 'conn.php';
+include 'config.php';
 
 $id = $_GET['del_id'];
 

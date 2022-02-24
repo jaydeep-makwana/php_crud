@@ -1,5 +1,5 @@
 <?php
-include 'conn.php';
+include 'config.php';
 
 $fNameErr = $lNameErr  = $ageErr = $genErr = $depErr = $dojErr = $salaryErr = $emailErr = $passwordErr = $cPasswordErr = $hobbyErr = $fileErr = '';
 
