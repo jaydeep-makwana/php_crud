@@ -51,9 +51,9 @@ function arrChecked($name, $value, $show)
     <div class="container mt-5  bg-black   w-100 ">
         <form method="post" enctype="multipart/form-data">
             <h1 class="text-center">Register</h1>
-            <div class="row   ">
+            <div class="row">
 
-                <div class="col-lg-6  ">
+                <div class="col-lg-6 ">
 
                     <div class="form-group">
                         <label for="" class="">First Name</label> <small> * <?php echo $fNameErr;   ?> </small>
@@ -125,46 +125,50 @@ function arrChecked($name, $value, $show)
 
                     <div class="form-group">
                         <label for="password">Password</label><small> * <?php echo $passwordErr;  ?> </small>
-                        <input type="text" class="form-control" name="password" id="password" value="<?php setValue('password'); ?>">
+                        <input type="password" class="form-control" name="password" id="password" value="<?php setValue('password'); ?>">
                     </div>
 
                     <div class="form-group">
                         <label for="cPassword">Confirm Password</label> <small> * <?php echo $cPasswordErr;  ?> </small>
-                        <input type="text" class="form-control" name="cPassword" id="cPassword" value="<?php setValue('cPassword'); ?>">
+                        <input type="password" class="form-control" name="cPassword" id="cPassword" value="<?php setValue('cPassword'); ?>">
+                    </div>
+                    <div class="form-check flot-right">
+                        <input type="checkbox" class="form-check-input" id="showPassword" >
+                        <label for="" class="form-check-label">show password</label>
                     </div>
 
                     <label for=""> Hobby <small> * <?php echo $hobbyErr;  ?> </small>
 
                         <div class="form-check">
-                            <input type="checkbox" class="form-check-input" name="hobby[]" id="hobby" value="reading" <?php arrChecked('hobby', 'reading', 'checked'); ?>>
+                            <input type="checkbox" class="form-check-input" name="hobby[]" id="" value="reading" <?php arrChecked('hobby', 'reading', 'checked'); ?>>
                             <label for="hobby" class="form-check-label">reading</label>
                         </div>
 
                         <div class="form-check">
-                            <input type="checkbox" class="form-check-input" name="hobby[]" id="hobby" value="dancing" <?php arrChecked('hobby', 'dancing', 'checked'); ?>>
+                            <input type="checkbox" class="form-check-input" name="hobby[]" id="" value="dancing" <?php arrChecked('hobby', 'dancing', 'checked'); ?>>
                             <label for="hobby" class="form-check-label">Dancing</label>
                         </div>
 
                         <div class="form-check">
-                            <input type="checkbox" class="form-check-input" name="hobby[]" id="hobby" value="programming" <?php arrChecked('hobby', 'programming', 'checked'); ?>>
+                            <input type="checkbox" class="form-check-input" name="hobby[]" id="" value="programming" <?php arrChecked('hobby', 'programming', 'checked'); ?>>
                             <label for="hobby" class="form-check-label">Programming</label>
                         </div>
 
                         <div class="form-check">
-                            <input type="checkbox" class="form-check-input" name="hobby[]" id="hobby" value="gaming" <?php arrChecked('hobby', 'gaming', 'checked'); ?>>
+                            <input type="checkbox" class="form-check-input" name="hobby[]" id="" value="gaming" <?php arrChecked('hobby', 'gaming', 'checked'); ?>>
                             <label for="hobby" class="form-check-label">Gaming</label>
                         </div>
 
                     </label>
 
 
-                   
 
-                        <div class="form-group">
-                            <label for="exampleFormControlFile1">Upload Your Photo</label> <small> * <?php echo $fileErr;  ?> </small>
-                            <input type="file" name="file" class="form-control-file" id="exampleFormControlFile1">
-                        </div>
-                 
+
+                    <div class="form-group">
+                        <label for="exampleFormControlFile1">Upload Your Photo</label> <small> * <?php echo $fileErr;  ?> </small>
+                        <input type="file" name="file" class="form-control-file" id="exampleFormControlFile1">
+                    </div>
+
 
 
                     <input type="submit" name="submit" class="btn btn-primary">
@@ -180,9 +184,6 @@ function arrChecked($name, $value, $show)
             </div>
         </form>
     </div>
-
-
-
 
 
 
@@ -209,4 +210,3 @@ function arrChecked($name, $value, $show)
 // }
 
 ?>
-

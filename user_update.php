@@ -264,13 +264,13 @@ if (isset($_POST['submit'])) {
 
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="text" class="form-control" name="password" id="password" value="<?php passwordValue('password', 'password'); ?>">
+                        <input type="password" class="form-control" name="password" id="password" value="<?php passwordValue('password', 'password'); ?>">
                         <small class="red"><?php echo $passwordErr; ?></small>
                     </div>
 
                     <div class="form-group">
                         <label for="cPassword">Confirm Password</label>
-                        <input type="text" class="form-control" name="cPassword" id="cPassword" value="<?php passwordValue('confirm_password', 'cPassword'); ?>">
+                        <input type="password" class="form-control" name="cPassword" id="cPassword" value="<?php passwordValue('confirm_password', 'cPassword'); ?>">
                         <small class="red"><?php echo $cPasswordErr; ?></small>
                     </div>
 

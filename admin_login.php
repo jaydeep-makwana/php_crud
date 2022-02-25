@@ -89,7 +89,7 @@
 
              <div class="form-group">
                  <label for="">Password</label>
-                 <input class="form-control" type="text" name="password" value="<?php setValue('password'); ?>">
+                 <input class="form-control" type="password" name="password" value="<?php setValue('password'); ?>">
              </div>
 
 

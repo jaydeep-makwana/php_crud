@@ -149,12 +149,12 @@ function arrChecked($name, $value, $show)
 
                     <div class="form-group">
                         <label for="password">Password</label><small> * <?php echo $passwordErr;  ?> </small>
-                        <input type="text" class="form-control" name="password" id="password" value="<?php setValue('password'); ?>">
+                        <input type="password" class="form-control" name="password" id="password" value="<?php setValue('password'); ?>">
                     </div>
 
                     <div class="form-group">
                         <label for="cPassword">Confirm Password</label> <small> * <?php echo $cPasswordErr;  ?> </small>
-                        <input type="text" class="form-control" name="cPassword" id="cPassword" value="<?php setValue('cPassword'); ?>">
+                        <input type="password" class="form-control" name="cPassword" id="cPassword" value="<?php setValue('cPassword'); ?>">
                     </div>
 
                     <label for=""> Hobby <small> * <?php echo $hobbyErr;  ?> </small>
