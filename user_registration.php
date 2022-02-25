@@ -62,13 +62,13 @@ function arrChecked($name, $value, $show)
 
 
                     <div class="form-group">
-                        <label for="">Last Name</label> <small> <?php echo $lNameErr;   ?> </small>
+                        <label for="">Last Name</label> <small>* <?php echo $lNameErr;   ?> </small>
                         <input class="form-control" type="text" name="lName" value="<?php setValue('lName'); ?>">
                     </div>
 
 
                     <div class="form-group">
-                        <label for="">Age</label> <small> <?php echo $ageErr;   ?> </small>
+                        <label for="">Age</label> <small>* <?php echo $ageErr;   ?> </small>
                         <input type="text" class="form-control" name="age" value="<?php setValue('age'); ?>">
                     </div>
 

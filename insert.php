@@ -49,7 +49,7 @@ if (isset($_POST['submit'])) {
     } elseif (empty($_POST['lName'])) {
         $lNameErr = 'last name shold be not empty ';
     } elseif (!preg_match("/^[a-zA-Z]*$/", $_POST['lName'])) {
-        $lNameErr = '* only enter alphabet ';
+        $lNameErr = 'only enter alphabet ';
     } elseif (empty($_POST['age'])) {
         $ageErr = 'age shold be not empty ';
     } elseif (!preg_match("/\d/", $_POST['age'])) {
@@ -88,7 +88,7 @@ if (isset($_POST['submit'])) {
         $passwordErr = 'Password should contain at least one digit';
     } elseif (!preg_match("/\W/", $_POST['password'])) {
         $passwordErr = 'Password should contain at least one special character';
-    } elseif (strlen($pass) != 8) {
+    } elseif (strlen($pass) < 8) {
         $passwordErr = 'Password should be 8 characters';
     } elseif (empty($_POST['cPassword'])) {
         $cPasswordErr = 'enter your confirm password';
@@ -180,7 +180,7 @@ if (isset($_POST['add_user'])) {
     } elseif (empty($_POST['lName'])) {
         $lNameErr = 'last name shold be not empty ';
     } elseif (!preg_match("/^[a-zA-Z]*$/", $_POST['lName'])) {
-        $lNameErr = '* only enter alphabet ';
+        $lNameErr = 'only enter alphabet ';
     } elseif (empty($_POST['age'])) {
         $ageErr = 'age shold be not empty ';
     } elseif (!preg_match("/\d/", $_POST['age'])) {
@@ -219,7 +219,7 @@ if (isset($_POST['add_user'])) {
         $passwordErr = 'Password should contain at least one digit';
     } elseif (!preg_match("/\W/", $_POST['password'])) {
         $passwordErr = 'Password should contain at least one special character';
-    } elseif (strlen($pass) != 8) {
+    } elseif (strlen($pass) < 8) {
         $passwordErr = 'Password should be 8 characters';
     } elseif (empty($_POST['cPassword'])) {
         $cPasswordErr = 'enter your confirm password';
