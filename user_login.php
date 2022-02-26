@@ -2,17 +2,14 @@
 include 'config.php';
 session_start();
 
-
 if (isset($_SESSION['id'])) {
     header('location:user_welcome.php');
 }
-if (isset($_COOKIE['id'])) {
-    header('location:user_welcome.php');
-}
 
+# user login logic
 $emailErr = $passwordErr = '';
-
 if (isset($_POST['submit'])) {
+
     $email = $_POST['email'];
     $pass = $_POST['password'];
 
@@ -21,16 +18,13 @@ if (isset($_POST['submit'])) {
     } elseif (empty($pass)) {
         $passwordErr = "password required";
     } else {
-
-
-
         $selectTable = "SELECT * FROM user WHERE email ='$email'";
         $query = mysqli_query($conn, $selectTable);
         $num_rows = mysqli_num_rows($query);
         $arr = mysqli_fetch_assoc($query);
         if ($num_rows) {
-            if ($arr['password'] == base64_encode($pass)) {
 
+            if ($arr['password'] == base64_encode($pass)) {
                 $_SESSION['id'] = $arr['id'];
                 setcookie('id', $_SESSION['id'], time() + 60 * 10);
                 header('location:user_welcome.php');
@@ -66,9 +60,11 @@ function setValue($value)
 </head>
 
 <body class="user-bg">
+    <!-- navbar -->
     <?php include 'navbar.php'; ?>
 
-    <div class="container mt-5 bg-black col-lg-3">
+    <!-- user login form -->
+    <div class="container mt-5 form-bg-user col-lg-3">
 
         <form method="post">
             <h1 class="text-center">Log in</h1>
@@ -79,24 +75,31 @@ function setValue($value)
                 <small class="red"><?php echo $emailErr; ?></small>
             </div>
 
-
             <div class="form-group">
                 <label for="">Password</label>
-                <input class="form-control" type="password" name="password" value="<?php setValue('password'); ?>">
+                <input class="form-control" type="password" id="password" name="password" value="<?php setValue('password'); ?>">
                 <small class="red"><?php echo $passwordErr; ?></small>
             </div>
 
+            <div class="form-check showPassword">
+                <input type="checkbox" class="form-check-input" id="signInPass">
+                <label for="signInPass" class="form-check-label">show password</label>
+            </div>
+
             <input type="submit" name="submit" value='Log in' class="btn btn-primary">
-            <div class="form-group mt-5 text-primary text-center bg-light ">
-                <p> don't have have an account </p>
-                <a href="user_registration.php"> Register here
-                </a>
+
+            <div class="form-group mt-5 text-center bg-light ">
+                <p class="text-danger"> don't have have an account </p>
+                <a href="user_registration.php"> Register here</a>
             </div>
 
         </form>
 
     </div>
 
+    <script src="Assets/JS/signin_pass.js"></script>
 </body>
 
 </html>
+
+

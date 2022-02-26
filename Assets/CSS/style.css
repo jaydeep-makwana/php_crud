@@ -1,21 +1,39 @@
-small,
-.req {
-    color: red;
-}
-
-html,
-body {
+html,body {
     width: 100%;
 }
 
+
+/* error css */
+small {
+    color: red;
+}
+
+
+
+/* home page css */
 .main {
     margin-top: 10%;
 }
 
+.home-bg {
+    background-image: url(../image/./1543613757886.jpg);
+    height: 100vh;
+    
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: sticky;
+}
+
+
+
+/* navbar css */
 nav {
     background-color: black;
 }
 
+
+
+/* user related css */
 .user_welcome {
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../image/./welcome-greeting-message.png);
     height: 100vh;
@@ -24,6 +42,25 @@ nav {
     background-size: cover;
 }
 
+.userData {
+    width: fit-content;
+    margin: auto;
+    border-radius: 10px;
+}
+
+.user-bg {
+ 
+
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(../image/./Virtual-Workshop-1.jpg);
+    height: 100vh;
+    width: 100vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+
+/* admin related css */
 .admin_welcome {
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../image/./shutterstock_1231981675.jpg);
     height: 100vh;
@@ -32,6 +69,18 @@ nav {
     background-size: cover;
 }
 
+.admin-bg {
+   
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),url(../image/./man-having-a-conference-call-with-his-business-team-online-vector-id1218524083.jpg);
+    height: 100vh;
+    width: 100vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+
+/* utilities classes */
 .wel_msg_bg {
     width: fit-content;
     border-radius: 10px;
@@ -40,41 +89,26 @@ nav {
     margin-top: 12%;
 }
 
-.bg-black {
-    background-color: rgba(4, 4, 32, 0.5);
+.form-bg-user {
+    
     color: rgb(255, 255, 255);
-    border: 2px solid blue;
+    border: 2px solid rgb(119, 243, 212);
     border-radius: 5px;
 }
 
-.userData {
-    width: fit-content;
-    margin: auto;
-    border-radius: 10px;
+.form-bg-admin {
+    
+    color: rgb(255, 255, 255);
+    border: 2px solid rgb(80 255 255);
+    border-radius: 5px;
 }
 
-.red {
-    color: rgb(255, 85, 85);
+.showPassword{
+    float: right;
 }
 
-.home-bg {
-    background-image: url(../image/./1543613757886.jpg);
-    height: 100vh;
-    width: 100vw;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
 
-.admin-bg {
-    background-image: url(../image/./man-having-a-conference-call-with-his-business-team-online-vector-id1218524083.jpg);
-    height: 100vh;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
 
-.user-bg {
-    background-image: url(../image/./Virtual-Workshop-1.jpg);
-    height: 100vh;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
+
+
+

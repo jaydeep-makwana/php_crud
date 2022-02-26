@@ -5,11 +5,8 @@
     if (isset($_SESSION['aid'])) {
         header('location:admin_login.php');
     }
-    
-    if (isset($_COOKIE['aid'])) {
-        header('location:admin_login.php');
-    }
 
+    # select data form admin table and create table if not exist
     $selectTable = "SELECT * FROM admin ";
     $tblQuery = mysqli_query($conn, $selectTable);
 
@@ -20,9 +17,8 @@
         }
     }
 
+    # admin login with session and cookie
     $loginErr = '';
-
-
     if (isset($_POST['submit'])) {
 
         if (empty($_POST['userName']) || empty($_POST['password'])) {
@@ -46,6 +42,7 @@
         }
     }
 
+    # set value in input field
     function setValue($value)
     {
         if (isset($_POST[$value])) {
@@ -69,47 +66,39 @@
  </head>
 
  <body class="admin-bg">
+     <!-- navbar -->
      <?php include 'navbar.php'; ?>
 
-     <div class="container mt-5 p-3 bg-black col-lg-3">
+     <!-- admin login form -->
+     <div class="container mt-5 p-3 form-bg-admin col-lg-3">
 
          <form method="post">
              <h1 class="text-center">Log in</h1>
              <small class="red"><?php echo $loginErr; ?></small>
-
-
-
-
 
              <div class="form-group">
                  <label for="" class="">User Name</label>
                  <input class="form-control" type="text" name="userName" value="<?php setValue('userName'); ?>">
              </div>
 
-
              <div class="form-group">
                  <label for="">Password</label>
-                 <input class="form-control" type="password" name="password" value="<?php setValue('password'); ?>">
+                 <input class="form-control" type="password" id="password" name="password" value="<?php setValue('password'); ?>">
              </div>
 
-
-
-
-
-
+             <div class="form-check showPassword">
+                 <input type="checkbox" class="form-check-input" id="signInPass">
+                 <label for="signInPass" class="form-check-label">show password</label>
+             </div>
 
              <input type="submit" name="submit" value='Log in' class="btn btn-primary">
-
-
-
-
-
-
 
          </form>
 
      </div>
 
+
+     <script src="Assets/JS/signin_pass.js"></script>
  </body>
 
  </html>

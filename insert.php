@@ -20,27 +20,21 @@ if (isset($_POST['submit'])) {
      salary int(10) not null,
      email  varchar(100) not null,
      password varchar(100) not null,
-     confirm_password varchar(100) not null,
      hobby text not null,
-     photo varchar(100) not null
- 
-  
-    )";
+     photo varchar(100) not null)";
 
         if (!mysqli_query($conn, $createTable)) {
             echo mysqli_error($conn);
         }
     }
 
-
-
     $email = $_POST['email'];
     $pass = $_POST['password'];
-
 
     $selectEmail = "SELECT * FROM user WHERE email = '$email' ";
     $query = mysqli_query($conn, $selectEmail);
     $num_row = mysqli_num_rows($query);
+
 
     if (empty($_POST['fName'])) {
         $fNameErr = 'first name should be not empty';
@@ -101,7 +95,6 @@ if (isset($_POST['submit'])) {
     } elseif ($_FILES["file"]["size"] > 1000000) {
         $fileErr = 'image size should be less than 1 MB';
     } else {
-
         $firstName = $_POST['fName'];
         $lastName = $_POST['lName'];
         $age = $_POST['age'];
@@ -110,7 +103,6 @@ if (isset($_POST['submit'])) {
         $dateOfJoin = $_POST['doj'];
         $email = $_POST['email'];
         $password = base64_encode($_POST['password']);
-        $confirm_password = base64_encode($_POST['cPassword']);
         $salary = $_POST['salary'];
         $hobby = $_POST['hobby'];
 
@@ -122,7 +114,7 @@ if (isset($_POST['submit'])) {
 
         $movefile = move_uploaded_file($_FILES['file']['tmp_name'], $imagePath);
 
-        $insertQuery = "INSERT INTO user (`firstName`,`lastName`,`age`,`gender`,`department`,`date_of_join`,`salary`,`email`,`password`, `confirm_password`, `hobby`,`photo`) VALUES ('$firstName','$lastName','$age','$gender','$department ','$dateOfJoin','$salary ','$email','$password','$confirm_password','$ArrToString','$imagePath')";
+        $insertQuery = "INSERT INTO user (`firstName`,`lastName`,`age`,`gender`,`department`,`date_of_join`,`salary`,`email`,`password`, `hobby`,`photo`) VALUES ('$firstName','$lastName','$age','$gender','$department ','$dateOfJoin','$salary ','$email','$password','$ArrToString','$imagePath')";
         if (mysqli_query($conn, $insertQuery) && $movefile) {
             if (isset($_POST['add_user'])) {
                 header('location:dashboard.php');
@@ -133,6 +125,9 @@ if (isset($_POST['submit'])) {
         }
     }
 }
+
+
+
 
 # insert data through admin
 if (isset($_POST['add_user'])) {
@@ -151,23 +146,16 @@ if (isset($_POST['add_user'])) {
      salary int(10) not null,
      email  varchar(100) not null,
      password varchar(100) not null,
-     confirm_password varchar(100) not null,
      hobby text not null,
-     photo varchar(100) not null
- 
-  
-    )";
+     photo varchar(100) not null)";
 
         if (!mysqli_query($conn, $createTable)) {
             echo mysqli_error($conn);
         }
     }
-
-
-
+ 
     $email = $_POST['email'];
     $pass = $_POST['password'];
-
 
     $selectEmail = "SELECT * FROM user WHERE email = '$email' ";
     $query = mysqli_query($conn, $selectEmail);
@@ -232,7 +220,6 @@ if (isset($_POST['add_user'])) {
     } elseif ($_FILES["file"]["size"] > 1000000) {
         $fileErr = 'image size should be less than 1 MB';
     } else {
-
         $firstName = $_POST['fName'];
         $lastName = $_POST['lName'];
         $age = $_POST['age'];
@@ -241,7 +228,6 @@ if (isset($_POST['add_user'])) {
         $dateOfJoin = $_POST['doj'];
         $email = $_POST['email'];
         $password = base64_encode($_POST['password']);
-        $confirm_password = base64_encode($_POST['cPassword']);
         $salary = $_POST['salary'];
         $hobby = $_POST['hobby'];
 
@@ -253,7 +239,7 @@ if (isset($_POST['add_user'])) {
 
         $movefile = move_uploaded_file($_FILES['file']['tmp_name'], $imagePath);
 
-        $insertQuery = "INSERT INTO user (`firstName`,`lastName`,`age`,`gender`,`department`,`date_of_join`,`salary`,`email`,`password`, `confirm_password`, `hobby`,`photo`) VALUES ('$firstName','$lastName','$age','$gender','$department ','$dateOfJoin','$salary ','$email','$password','$confirm_password','$ArrToString','$imagePath')";
+        $insertQuery = "INSERT INTO user (`firstName`,`lastName`,`age`,`gender`,`department`,`date_of_join`,`salary`,`email`,`password`, `hobby`,`photo`) VALUES ('$firstName','$lastName','$age','$gender','$department ','$dateOfJoin','$salary ','$email','$password','$ArrToString','$imagePath')";
         if (mysqli_query($conn, $insertQuery) && $movefile) {
 
             header('location:dashboard.php');
@@ -262,3 +248,6 @@ if (isset($_POST['add_user'])) {
         }
     }
 }
+  
+
+
