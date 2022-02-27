@@ -1,16 +1,18 @@
-html,body {
+html,
+body {
     width: 100%;
 }
 
 
 /* error css */
+
 small {
     color: red;
 }
 
 
-
 /* home page css */
+
 .main {
     margin-top: 10%;
 }
@@ -18,24 +20,23 @@ small {
 .home-bg {
     background-image: url(../image/./1543613757886.jpg);
     height: 100vh;
-    
     background-repeat: no-repeat;
     background-size: cover;
     position: sticky;
 }
 
 
-
 /* navbar css */
+
 nav {
     background-color: black;
 }
 
 
-
 /* user related css */
+
 .user_welcome {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../image/./welcome-greeting-message.png);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../image/./welcome-greeting-message.png);
     height: 100vh;
     width: 100vw;
     background-repeat: no-repeat;
@@ -49,20 +50,29 @@ nav {
 }
 
 .user-bg {
- 
-
-    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(../image/./Virtual-Workshop-1.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../image/./Virtual-Workshop-1.jpg);
     height: 100vh;
     width: 100vw;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
+.user-info {
+    float: right;
+    margin-top: 66px;
+}
+
+.user-data img {
+    border: 2px solid whitesmoke;
+    border-radius: 50%;
+    cursor: pointer;
+}
 
 
 /* admin related css */
+
 .admin_welcome {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../image/./shutterstock_1231981675.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../image/./shutterstock_1231981675.jpg);
     height: 100vh;
     width: 100vw;
     background-repeat: no-repeat;
@@ -70,8 +80,7 @@ nav {
 }
 
 .admin-bg {
-   
-    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),url(../image/./man-having-a-conference-call-with-his-business-team-online-vector-id1218524083.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../image/./man-having-a-conference-call-with-his-business-team-online-vector-id1218524083.jpg);
     height: 100vh;
     width: 100vw;
     background-repeat: no-repeat;
@@ -79,8 +88,8 @@ nav {
 }
 
 
-
 /* utilities classes */
+
 .wel_msg_bg {
     width: fit-content;
     border-radius: 10px;
@@ -90,25 +99,17 @@ nav {
 }
 
 .form-bg-user {
-    
     color: rgb(255, 255, 255);
     border: 2px solid rgb(119, 243, 212);
     border-radius: 5px;
 }
 
 .form-bg-admin {
-    
     color: rgb(255, 255, 255);
     border: 2px solid rgb(80 255 255);
     border-radius: 5px;
 }
 
-.showPassword{
+.showPassword {
     float: right;
 }
-
-
-
-
-
-

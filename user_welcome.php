@@ -41,19 +41,6 @@ $welcome = "hello " . $myData['firstName'] . ", Welcome!!"
     <link rel="stylesheet" href="./assets/./bootstrap-4.6.1-dist/./css/./bootstrap.min.css">
     <link rel="stylesheet" href="Assets/CSS/style.css">
     <title>Document</title>
-    <style>
-        .user-info {
-            float: right;
-            margin-top: 66px;
-        }
-
-        .user-data img {
-            border: 2px solid whitesmoke;
-            border-radius: 50%;
-            cursor: pointer;
-
-        }
-    </style>
 </head>
 
 
@@ -91,7 +78,7 @@ $welcome = "hello " . $myData['firstName'] . ", Welcome!!"
 
                                 <h2><?php echo $myData['firstName']; ?></h2>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;d</span>
+                                    <span aria-hidden="true">&times;</span>
                                 </button>
 
                             </div>
