@@ -91,6 +91,11 @@ nav {
     background-attachment: fixed;
 }
 
+#search,
+#search-btn {
+    display: none;
+}
+
 
 /* utilities classes */
 

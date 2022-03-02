@@ -90,7 +90,7 @@ function setValue($value)
 
             <div class="form-group mt-5 text-center bg-light ">
                 <p class="text-danger"> don't have have an account </p>
-                <a href="user_registration.php"> Register here</a>
+                <a href="user_registration.php"> click here</a>
             </div>
 
         </form>
