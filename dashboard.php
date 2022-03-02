@@ -6,18 +6,67 @@ if (!isset($_SESSION['aid'])) {
     header('location:admin_login.php');
 }
 
-# fetch data of user table
-$selectTable = "SELECT * FROM user";
-$result = mysqli_query($conn, $selectTable);
-
-if (!$result) {
-    echo mysqli_error($conn);
+# functions for set value in input field and keep checked radio button and checkbox
+function setValue($value)
+{
+    if (isset($_POST[$value])) {
+        echo $_POST[$value];
+    }
 }
 
-                
+function checked($name, $value, $show)
+{
+    if (isset($_POST[$name])) {
+        if ($_POST[$name] == $value)
+            echo  $show;
+    }
+} 
 
- 
+function user_data()
+{
+    global $myData; ?>
+    <tr>
+        <td class="table-light"> <?php echo $myData['id']; ?> </td>
+        <td class="table-light"><?php echo $myData['firstName']; ?> </td>
+        <td class="table-light"><?php echo $myData['lastName']; ?> </td>
+        <td class="table-light"><?php echo $myData['age']; ?> </td>
+        <td class="table-light"><?php echo $myData['gender']; ?> </td>
+        <td class="table-light"><?php echo $myData['department']; ?> </td>
+        <td class="table-light"><?php echo $myData['date_of_join']; ?> </td>
+        <td class="table-light"><?php echo $myData['salary']; ?> </td>
+        <td class="table-light"><?php echo $myData['email']; ?> </td>
+        <td class="table-light"><?php echo base64_decode($myData['password']); ?> </td>
+        <td class="table-light"><?php echo $myData['hobby']; ?> </td>
+        <td class="table-light"> <img src="<?php echo $myData['photo']; ?>" alt="Network Error" hright='100px' width='100px'> </td>
+        <td class="table-warning"><a href="update.php?upld_id=<?php echo $myData['id']; ?>"><button class="btn btn-warning">Update</button></a></td>
+        <td class="table-danger"><button class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">DELETE</button></td>
+        <!-- delete Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-danger" id="exampleModalLabel">Delete</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Do you really want to delete record?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">cancel</button>
+                        <a href="delete.php?del_id=<?php echo $myData['id']; ?>"><button class="btn btn-danger">DELETE</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </tr>
+
+<?php
+}
 ?>
+
+
 
 
 
@@ -53,20 +102,22 @@ if (!$result) {
 
             <form class="form-inline my-2 my-lg-0" method="post">
                 <div class="form-ckeck">
-                    <select name="search_dropdown" class="form-control" id="search_dropdown" onchange="select_col()">
+                    <select name="search_dropdown"  class="form-control" id="search_dropdown"  >
                         <option value="" selected disabled>search by...</option>
-                        <option value="firstName">first name</option>
-                        <option value="lastName">last name</option>
-                        <option value="age">age</option>
-                        <option value="gender">gender</option>
-                        <option value="department">department</option>
-                        <option value="date_of_join">date of joining</option>
-                        <option value="salary">salary</option>
-                        <option value="email">email</option>
-                        <option value="hobby">hobby</option>
+                        <option value="id" <?php checked('search_dropdown', 'id', 'selected'); ?>>Id</option>
+                        <option value="firstName" <?php checked('search_dropdown', 'firstName', 'selected'); ?> >First Name</option>
+                        <option value="lastName" <?php checked('search_dropdown', 'lastName', 'selected'); ?> >Last Name</option>
+                        <option value="age" <?php checked('search_dropdown', 'age', 'selected'); ?> >Age</option>
+                        <option value="gender" <?php checked('search_dropdown', 'gender', 'selected'); ?> >Gender</option>
+                        <option value="department" <?php checked('search_dropdown', 'department', 'selected'); ?> >Department</option>
+                        <option value="date_of_join" <?php checked('search_dropdown', 'date_of_join', 'selected'); ?> >Date Of Joining</option>
+                        <option value="salary" <?php checked('search_dropdown', 'salary', 'selected'); ?> >Salary</option>
+                        <option value="email" <?php checked('search_dropdown', 'email', 'selected'); ?> >Email</option>
+                        <option value="hobby" <?php checked('search_dropdown', 'hobby', 'selected'); ?> >Hobby</option>
+ 
                     </select>
                 </div>
-                <input class="form-control mr-sm-2 ml-3" type="search" placeholder="Search" name="search" id="search" aria-label="Search">
+                <input class="form-control mr-sm-2 ml-3" type="search" placeholder="Search <?php setValue('search_dropdown');  ?> " name="search" id="search" value="<?php setValue('search'); ?>" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" id="search-btn" name="submit" type="submit">Search</button>
             </form>
         </div>
@@ -83,8 +134,8 @@ if (!$result) {
                 <tr>
 
                     <th class="table-light">Id</th>
-                    <th class="table-light">Fisrt_Name</th>
-                    <th class="table-light">Last_Name</th>
+                    <th class="table-light">Fisrt Name</th>
+                    <th class="table-light">Last Name</th>
                     <th class="table-light">Age</th>
                     <th class="table-light">Gender</th>
                     <th class="table-light">Department</th>
@@ -101,99 +152,30 @@ if (!$result) {
             </thead>
 
             <tbody>
-                <?php 
-                if (!isset($_POST['submit'])) { 
-                    while ($myData = mysqli_fetch_assoc($result)) { 
-                    ?>
-     <tr>
-    <td class="table-light"> <?php echo $myData['id']; ?> </td>
-    <td class="table-light"><?php echo $myData['firstName']; ?> </td>
-    <td class="table-light"><?php echo $myData['lastName']; ?> </td>
-    <td class="table-light"><?php echo $myData['age']; ?> </td>
-    <td class="table-light"><?php echo $myData['gender']; ?> </td>
-    <td class="table-light"><?php echo $myData['department']; ?> </td>
-    <td class="table-light"><?php echo $myData['date_of_join']; ?> </td>
-    <td class="table-light"><?php echo $myData['salary']; ?> </td>
-    <td class="table-light"><?php echo $myData['email']; ?> </td>
-    <td class="table-light"><?php echo base64_decode($myData['password']); ?> </td>
-    <td class="table-light"><?php echo $myData['hobby']; ?> </td>
-    <td class="table-light"> <img src="<?php echo $myData['photo']; ?>" alt="Network Error" hright='100px' width='100px'> </td>
-    <td class="table-warning"><a href="update.php?upld_id=<?php echo $myData['id']; ?>"><button class="btn btn-warning">Update</button></a></td>
-    <td class="table-danger"><button class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">DELETE</button></td>
-    <!-- delete Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title text-danger" id="exampleModalLabel">Delete</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Do you really want to delete record?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">cancel</button>
-                    <a href="delete.php?del_id=<?php echo $myData['id']; ?>"><button class="btn btn-danger">DELETE</button></a>
-                </div>
-            </div>
-        </div>
-    </div>
+                <?php
+                $result = $search_col = "";
+                if (!isset($_POST['submit'])) {
+                    # fetch data from user table
+                    $selectTable = "SELECT * FROM user";
+                    $result = mysqli_query($conn, $selectTable);
+                    while ($myData = mysqli_fetch_assoc($result)) {
+                        user_data();
+                    }
+                } else {
+                    
+                    $search_value = $_POST['search'];
+                      $search_col = $_POST['search_dropdown'];
+                    # search data from user table
+                    $serch_qry = "SELECT * FROM user WHERE $search_col LIKE '%$search_value%' ";
+                    $result = mysqli_query($conn, $serch_qry);
+                    
+                    while ($myData = mysqli_fetch_assoc($result)) {
+                        user_data();
+                    }
+                }
 
-</tr>
- <?php  }
-}else {
-    if (isset($_POST['search'])) {
-        # code...
-        $search_value = $_POST['search'];
-    }
-    $serch_qry = "SELECT * FROM user WHERE userName LIKE '%$search_value%";
-    $rslt = mysqli_query($conn, $serch_qry);
-     
-    while ($myData = mysqli_fetch_assoc($rslt)) { 
-        ?>
-<tr>
-<td class="table-light"> <?php echo $myData['id']; ?> </td>
-<td class="table-light"><?php echo $myData['firstName']; ?> </td>
-<td class="table-light"><?php echo $myData['lastName']; ?> </td>
-<td class="table-light"><?php echo $myData['age']; ?> </td>
-<td class="table-light"><?php echo $myData['gender']; ?> </td>
-<td class="table-light"><?php echo $myData['department']; ?> </td>
-<td class="table-light"><?php echo $myData['date_of_join']; ?> </td>
-<td class="table-light"><?php echo $myData['salary']; ?> </td>
-<td class="table-light"><?php echo $myData['email']; ?> </td>
-<td class="table-light"><?php echo base64_decode($myData['password']); ?> </td>
-<td class="table-light"><?php echo $myData['hobby']; ?> </td>
-<td class="table-light"> <img src="<?php echo $myData['photo']; ?>" alt="Network Error" hright='100px' width='100px'> </td>
-<td class="table-warning"><a href="update.php?upld_id=<?php echo $myData['id']; ?>"><button class="btn btn-warning">Update</button></a></td>
-<td class="table-danger"><button class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">DELETE</button></td>
-<!-- delete Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-<div class="modal-dialog">
-<div class="modal-content">
-    <div class="modal-header">
-        <h5 class="modal-title text-danger" id="exampleModalLabel">Delete</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        </button>
-    </div>
-    <div class="modal-body">
-        Do you really want to delete record?
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">cancel</button>
-        <a href="delete.php?del_id=<?php echo $myData['id']; ?>"><button class="btn btn-danger">DELETE</button></a>
-    </div>
-</div>
-</div>
-</div>
+                ?>
 
-</tr>
-<?php  }
-
-
-}
-
-                 ?>
             </tbody>
 
         </table>
