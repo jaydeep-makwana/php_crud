@@ -116,10 +116,12 @@ if (isset($_POST['submit'])) {
 
         $insertQuery = "INSERT INTO user (`firstName`,`lastName`,`age`,`gender`,`department`,`date_of_join`,`salary`,`email`,`password`, `hobby`,`photo`) VALUES ('$firstName','$lastName','$age','$gender','$department ','$dateOfJoin','$salary ','$email','$password','$ArrToString','$imagePath')";
         if (mysqli_query($conn, $insertQuery) && $movefile) {
-            if (isset($_POST['add_user'])) {
-                header('location:dashboard.php');
+             
+           $alrt =   '<script> alert("data"); </script>'  ;
+            if ($alrt) {
+                # code...
+                header('location:user_login.php');
             }
-            header('location:user_login.php');
         } else {
             echo mysqli_error($conn);
         }

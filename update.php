@@ -173,17 +173,13 @@ if (isset($_POST['submit'])) {
             <ul class="navbar-nav mr-auto">
 
                 <li class="nav-item active ml-4">
-                    <a class="nav-link" href="admin_welcome.php">Home</a>
+                    <a class="nav-link" href="dashboard.php">Home</a>
                 </li>
 
                 <li class="nav-item active ml-4">
                     <a class="nav-link" href="addUser.php">Add Users</a>
-                </li>
-
-                <li class="nav-item active ml-4">
-                    <a class="nav-link" href="dashboard.php">Back</a>
-                </li>
-
+                </li> 
+                
             </ul>
 
         </div>

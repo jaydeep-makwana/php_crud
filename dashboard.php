@@ -2,6 +2,32 @@
 include 'config.php';
 session_start();
 
+# admin code
+if (!isset($_SESSION['aid'])) {
+    header('location:admin_login.php');
+}
+
+if (!isset($_SESSION['aid'])) {
+    $_SESSION['aid'] = $_COOKIE['aid'];
+}
+
+# select data from admin table
+$id = $_SESSION['aid'];
+$searchTable = "SELECT * FROM admin WHERE id = $id";
+$rslt = mysqli_query($conn, $searchTable);
+
+if (!$rslt) {
+    echo mysqli_error($conn);
+}
+
+$myData = mysqli_fetch_assoc($rslt);
+if (!$myData) {
+    echo mysqli_error($conn);
+}
+
+$welcome = "hello " . $myData['userName'] . ", Welcome!!";
+
+# user code
 if (!isset($_SESSION['aid'])) {
     header('location:admin_login.php');
 }
@@ -20,7 +46,7 @@ function checked($name, $value, $show)
         if ($_POST[$name] == $value)
             echo  $show;
     }
-} 
+}
 
 function user_data()
 {
@@ -47,7 +73,9 @@ function user_data()
                     <div class="modal-header">
                         <h5 class="modal-title text-danger" id="exampleModalLabel">Delete</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        </button>
+                        <span aria-hidden="true" class="text-dark">&times;</span>
+                    </button>
+
                     </div>
                     <div class="modal-body">
                         Do you really want to delete record?
@@ -91,10 +119,7 @@ function user_data()
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse h4" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active ml-4">
-                    <a class="nav-link" href="admin_welcome.php">Home</a>
-                </li>
+            <ul class="navbar-nav mr-auto"> 
                 <li class="nav-item active ml-4">
                     <a class="nav-link" href="addUser.php">Add Users</a>
                 </li>
@@ -102,25 +127,57 @@ function user_data()
 
             <form class="form-inline my-2 my-lg-0" method="post">
                 <div class="form-ckeck">
-                    <select name="search_dropdown"  class="form-control" id="search_dropdown"  >
+                    <select name="search_dropdown" class="form-control" id="search_dropdown">
                         <option value="" selected disabled>search by...</option>
                         <option value="id" <?php checked('search_dropdown', 'id', 'selected'); ?>>Id</option>
-                        <option value="firstName" <?php checked('search_dropdown', 'firstName', 'selected'); ?> >First Name</option>
-                        <option value="lastName" <?php checked('search_dropdown', 'lastName', 'selected'); ?> >Last Name</option>
-                        <option value="age" <?php checked('search_dropdown', 'age', 'selected'); ?> >Age</option>
-                        <option value="gender" <?php checked('search_dropdown', 'gender', 'selected'); ?> >Gender</option>
-                        <option value="department" <?php checked('search_dropdown', 'department', 'selected'); ?> >Department</option>
-                        <option value="date_of_join" <?php checked('search_dropdown', 'date_of_join', 'selected'); ?> >Date Of Joining</option>
-                        <option value="salary" <?php checked('search_dropdown', 'salary', 'selected'); ?> >Salary</option>
-                        <option value="email" <?php checked('search_dropdown', 'email', 'selected'); ?> >Email</option>
-                        <option value="hobby" <?php checked('search_dropdown', 'hobby', 'selected'); ?> >Hobby</option>
- 
+                        <option value="firstName" <?php checked('search_dropdown', 'firstName', 'selected'); ?>>First Name</option>
+                        <option value="lastName" <?php checked('search_dropdown', 'lastName', 'selected'); ?>>Last Name</option>
+                        <option value="age" <?php checked('search_dropdown', 'age', 'selected'); ?>>Age</option>
+                        <option value="gender" <?php checked('search_dropdown', 'gender', 'selected'); ?>>Gender</option>
+                        <option value="department" <?php checked('search_dropdown', 'department', 'selected'); ?>>Department</option>
+                        <option value="date_of_join" <?php checked('search_dropdown', 'date_of_join', 'selected'); ?>>Date Of Joining</option>
+                        <option value="salary" <?php checked('search_dropdown', 'salary', 'selected'); ?>>Salary</option>
+                        <option value="email" <?php checked('search_dropdown', 'email', 'selected'); ?>>Email</option>
+                        <option value="hobby" <?php checked('search_dropdown', 'hobby', 'selected'); ?>>Hobby</option>
+
                     </select>
                 </div>
                 <input class="form-control mr-sm-2 ml-3" type="search" placeholder="Search <?php setValue('search_dropdown');  ?> " name="search" id="search" value="<?php setValue('search'); ?>" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" id="search-btn" name="submit" type="submit">Search</button>
+                <button class="btn btn-outline-success my-2 my-sm-0" id="search-btn" name="submit"  type="submit">Search</button>
             </form>
-        </div>
+
+            <div class="d-flex user-data ml-3">
+
+                <img src="./assets/./image/./Admin.png" alt="Network Error" width='45px' height='45px' data-toggle="modal" data-target="#exampleModa">
+
+                <!-- Modal -->
+                <div class="modal fade " id="exampleModa" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+                    <div class="modal-dialog user-info">
+
+                        <div class="modal-content">
+
+                            <div class="modal-header">
+
+                                <h2><?php echo $myData['userName']; ?></h2>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true"  >&times;</span>
+                                </button>
+
+                            </div>
+
+
+                            <div class="modal-body">
+                                <h2><a href="admin_logout.php" class="btn btn-danger">Log out</a></h2>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- modal finished -->
+            </div>
 
 
     </nav>
@@ -162,13 +219,13 @@ function user_data()
                         user_data();
                     }
                 } else {
-                    
+                    $search_col = $_POST['search_dropdown'];
                     $search_value = $_POST['search'];
-                      $search_col = $_POST['search_dropdown'];
+                     
                     # search data from user table
                     $serch_qry = "SELECT * FROM user WHERE $search_col LIKE '%$search_value%' ";
                     $result = mysqli_query($conn, $serch_qry);
-                    
+
                     while ($myData = mysqli_fetch_assoc($result)) {
                         user_data();
                     }
