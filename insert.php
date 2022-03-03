@@ -120,7 +120,7 @@ if (isset($_POST['submit'])) {
            $alrt =   '<script> alert("data"); </script>'  ;
             if ($alrt) {
                 # code...
-                header('location:user_login.php');
+                header('location:login.php');
             }
         } else {
             echo mysqli_error($conn);

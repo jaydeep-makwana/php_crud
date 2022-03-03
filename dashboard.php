@@ -4,7 +4,7 @@ session_start();
 
 # admin code
 if (!isset($_SESSION['aid'])) {
-    header('location:admin_login.php');
+    header('location:login.php');
 }
 
 if (!isset($_SESSION['aid'])) {

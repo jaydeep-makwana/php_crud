@@ -23,16 +23,11 @@
                 <li class="nav-item active ml-4">
                     <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
                 </li>
-
-                <li class="nav-item dropdown ml-4">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                        Login
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="user_login.php">As User</a>
-                        <a class="dropdown-item" href="admin_login.php">As Admin </a>
-                    </div>
+                
+                <li class="nav-item active ml-4">
+                    <a class="nav-link" href="login.php">Login <span class="sr-only">(current)</span></a>
                 </li>
+                 
             </ul>
         </div>
 
