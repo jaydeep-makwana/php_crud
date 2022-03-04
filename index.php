@@ -4,9 +4,15 @@ session_start();
 if (isset($_SESSION['id'])) {
     header('location:user_welcome.php');
 }
+if (isset($_COOKIE['id'])) {
+    header('location:user_welcome.php');
+}
 
 if (isset($_SESSION['aid'])) {
-    header('location:admin_welcome.php');
+    header('location:dashboard.php');
+}
+if (isset($_COOKIE['aid'])) {
+    header('location:dashboard.php');
 }
 
 ?>
@@ -46,7 +52,7 @@ if (isset($_SESSION['aid'])) {
                 <img src="./assets/image/Admin.png" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">ADMIN</h5>
-                    <a href="admin_login.php" class="btn btn-dark">Click here</a>
+                    <a href="login.php" class="btn btn-dark">Click here</a>
                 </div>
             </div>
         </div>

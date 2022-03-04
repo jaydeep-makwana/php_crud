@@ -5,6 +5,9 @@ session_start();
 if (isset($_SESSION['id'])) {
     header('location:user_welcome.php');
 }
+if (isset($_COOKIE['id'])) {
+    header('location:user_welcome.php');
+}
 
 # user login logic
 $emailErr = $passwordErr = '';
@@ -39,6 +42,9 @@ if (isset($_POST['submit'])) {
 
 # admin login logic
 if (isset($_SESSION['aid'])) {
+    header('location:dashboard.php');
+}
+if (isset($_COOKIE['aid'])) {
     header('location:dashboard.php');
 }
 
