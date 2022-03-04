@@ -173,7 +173,7 @@ function arrChecked($name, $value, $show)
 
                     <div class="form-group mt-5 text-center   bg-light ">
                         <p class="text-danger">already have an account?</p>
-                        <a href="user_login.php "> click here</a>
+                        <a href="login.php "> click here</a>
                     </div>
 
                 </div>

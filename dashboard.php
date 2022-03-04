@@ -28,10 +28,7 @@ if (!$myData) {
 $welcome = "hello " . $myData['userName'] . ", Welcome!!";
 
 # user code
-if (!isset($_SESSION['aid'])) {
-    header('location:admin_login.php');
-}
-
+ 
 # functions for set value in input field and keep checked radio button and checkbox
 function setValue($value)
 {
@@ -99,6 +96,7 @@ function user_data()
 
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -127,8 +125,7 @@ function user_data()
 
             <form class="form-inline my-2 my-lg-0" method="post">
                 <div class="form-ckeck">
-                    <select name="search_dropdown" class="form-control" id="search_dropdown">
-                        <option value="" selected disabled>search by...</option>
+                    <select name="search_dropdown" class="form-control"  id="search_dropdown">
                         <option value="id" <?php checked('search_dropdown', 'id', 'selected'); ?>>Id</option>
                         <option value="firstName" <?php checked('search_dropdown', 'firstName', 'selected'); ?>>First Name</option>
                         <option value="lastName" <?php checked('search_dropdown', 'lastName', 'selected'); ?>>Last Name</option>
@@ -142,7 +139,7 @@ function user_data()
 
                     </select>
                 </div>
-                <input class="form-control mr-sm-2 ml-3" type="search" placeholder="Search <?php setValue('search_dropdown');  ?> " name="search" id="search" value="<?php setValue('search'); ?>" aria-label="Search">
+                <input class="form-control mr-sm-2 ml-3" type="search" placeholder="Search by <?php setValue('search_dropdown');  ?> " name="search" id="search" value="<?php setValue('search'); ?>" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" id="search-btn" name="submit"  type="submit">Search</button>
             </form>
 

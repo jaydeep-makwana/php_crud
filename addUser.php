@@ -3,7 +3,7 @@ include('insert.php');
 session_start();
 
 if (!isset($_SESSION['aid'])) {
-    header('location:admin_login.php');
+    header('location:login.php');
 }
 
 # functions for set value in input field and keep checked radio button and checkbox

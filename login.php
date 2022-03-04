@@ -101,17 +101,17 @@ function setValue($value)
     <title>Login</title>
 </head>
 
-<body class="user-bg">
+<body class="login-bg">
     <!-- navbar -->
     <?php include 'navbar.php'; ?>
 
     <!-- user login form -->
-    <div class="container mt-5   mx-auto  row w-100">
-        <div class="col-lg-6 form-bg-user  ">
+    <div class="container mt-5 text-dark  mx-auto  row w-100">
+        <div class="col-lg-4 form-bg-user   mx-auto">
             
             <form method="post">
 
-                <h1 class="text-center">User Log in</h1>
+                <h1 class="text-center p-3">User Log in</h1>
 
                 <div class="form-group">
                     <label for="" class="">Email</label>
@@ -142,10 +142,10 @@ function setValue($value)
         </div>
 
 
-        <div class="col-lg-6 form-bg-admin  ">
+        <div class="col-lg-4 form-bg-admin    mx-auto">
 
             <form method="post">
-                <h1 class="text-center"> Admin Log in</h1>
+                <h1 class="text-center p-3"> Admin Log in</h1>
                 <small class="red"><?php echo $loginErr; ?></small>
 
                 <div class="form-group">

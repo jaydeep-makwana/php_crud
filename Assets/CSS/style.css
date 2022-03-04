@@ -91,6 +91,15 @@ nav {
     background-attachment: fixed;
 }
 
+.login-bg {
+    background-image: url(../image/./103738404-certificado-seguro-de-smartphone-concepto-de-autenticación-de-dos-identidades-verificar-la-solicitud.jpg);
+    height: 100vh;
+    width: 100vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
 
 /* utilities classes */
 
@@ -116,4 +125,16 @@ nav {
 
 .showPassword {
     float: right;
+}
+
+
+/* login css */
+
+.login-bg {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../image/./1543613757886.jpg);
+    height: 100vh;
+    width: 100vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
