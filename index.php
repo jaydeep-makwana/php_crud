@@ -1,6 +1,8 @@
 <?php
 session_start();
 # if session set then redirect spacific file
+
+# user
 if (isset($_SESSION['id'])) {
     header('location:user_welcome.php');
 }
@@ -8,6 +10,7 @@ if (isset($_COOKIE['id'])) {
     header('location:user_welcome.php');
 }
 
+# admin
 if (isset($_SESSION['aid'])) {
     header('location:dashboard.php');
 }
