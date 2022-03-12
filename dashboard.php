@@ -28,7 +28,7 @@ if (!$myData) {
 $welcome = "hello " . $myData['userName'] . ", Welcome!!";
 
 # user code
- 
+
 # functions for set value in input field and keep checked radio button and checkbox
 function setValue($value)
 {
@@ -70,8 +70,8 @@ function user_data()
                     <div class="modal-header">
                         <h5 class="modal-title text-danger" id="exampleModalLabel">Delete</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true" class="text-dark">&times;</span>
-                    </button>
+                            <span aria-hidden="true" class="text-dark">&times;</span>
+                        </button>
 
                     </div>
                     <div class="modal-body">
@@ -117,7 +117,7 @@ function user_data()
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse h4" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto"> 
+            <ul class="navbar-nav mr-auto">
                 <li class="nav-item active ml-4">
                     <a class="nav-link" href="addUser.php">Add Users</a>
                 </li>
@@ -125,7 +125,7 @@ function user_data()
 
             <form class="form-inline my-2 my-lg-0" method="post">
                 <div class="form-ckeck">
-                    <select name="search_dropdown" class="form-control"  id="search_dropdown" onchange="atr()">
+                    <select name="search_dropdown" class="form-control" id="search_dropdown" onchange="atr()">
                         <option value="id" <?php checked('search_dropdown', 'id', 'selected'); ?>>Id</option>
                         <option value="firstName" <?php checked('search_dropdown', 'firstName', 'selected'); ?>>First Name</option>
                         <option value="lastName" <?php checked('search_dropdown', 'lastName', 'selected'); ?>>Last Name</option>
@@ -139,8 +139,7 @@ function user_data()
 
                     </select>
                 </div>
-                <input class="form-control mr-sm-2 ml-3" type="search" placeholder="search by Id" name="search" id="search" value="<?php setValue('search'); ?>" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" id="search-btn" name="submit"  type="submit">Search</button>
+                <input class="form-control mr-sm-2 ml-3" type="search" placeholder="search by Id" name="search" id="search" onkeyup="searchData(this.value)">
             </form>
 
             <div class="d-flex user-data ml-3">
@@ -158,7 +157,7 @@ function user_data()
 
                                 <h2><?php echo $myData['userName']; ?></h2>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true"  >&times;</span>
+                                    <span aria-hidden="true">&times;</span>
                                 </button>
 
                             </div>
@@ -205,28 +204,21 @@ function user_data()
                 </tr>
             </thead>
 
-            <tbody>
+            <tbody id="rows">
                 <?php
-                $result = $search_col = "";
-                if (!isset($_POST['submit'])) {
+         
+          
                     # fetch data from user table
                     $selectTable = "SELECT * FROM user";
                     $result = mysqli_query($conn, $selectTable);
                     while ($myData = mysqli_fetch_assoc($result)) {
                         user_data();
                     }
-                } else {
-                    $search_col = $_POST['search_dropdown'];
-                    $search_value = $_POST['search'];
-                     
-                    # search data from user table
-                    $serch_qry = "SELECT * FROM user WHERE $search_col LIKE '%$search_value%' ";
-                    $result = mysqli_query($conn, $serch_qry);
+                 
+                    
+            
 
-                    while ($myData = mysqli_fetch_assoc($result)) {
-                        user_data();
-                    }
-                }
+                  
 
                 ?>
 
@@ -234,6 +226,26 @@ function user_data()
 
         </table>
     </div>
+
+
+
+
+
+    <script>
+        function searchData(data) {
+            let xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("rows").innerHTML = this.response;
+                }
+            }
+            xhr.open("GET", "search_data.php?q=" + data, true);
+            xhr.send();
+        }
+    </script>
+
+
+    
     <script src="./Assets/./JS/serch.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
