@@ -178,8 +178,8 @@ if (isset($_POST['submit'])) {
 
                 <li class="nav-item active ml-4">
                     <a class="nav-link" href="addUser.php">Add Users</a>
-                </li> 
-                
+                </li>
+
             </ul>
 
         </div>

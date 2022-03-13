@@ -1,6 +1,8 @@
 <?php
 include 'config.php';
+
 $search_value = $_GET['q'];
+
   # search data from user table
   $serch_qry = "SELECT * FROM user WHERE firstName LIKE '%$search_value%' ";
   $result = mysqli_query($conn, $serch_qry);
