@@ -34,6 +34,7 @@ if (isset($_COOKIE['aid'])) {
 
 
 <body class="home-bg">
+    
     <!-- navbar -->
     <?php include 'navbar.php'; ?>
 
