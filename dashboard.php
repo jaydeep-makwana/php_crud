@@ -56,6 +56,9 @@ $result = mysqli_query($conn, $query);
 // $num = mysqli_num_rows($result);
 $assoc = mysqli_fetch_assoc($result);
 
+$arrKey = array_keys($assoc);
+
+
 ?>
 
 
@@ -86,19 +89,24 @@ $assoc = mysqli_fetch_assoc($result);
                 </li>
             </ul>
 
+            <!-- search form start -->
             <form class="form-inline my-2 my-lg-0" method="post">
-                <div class="form-ckeck">
-                    
+                <input class="form-control mr-sm-2 ml-3" type="text" id="search" placeholder="select any filed for search" disabled onkeyup="searchData()">
+                <div class="form-ckeck" width="5">
+
                     <select class="form-control" id="search_dropdown" onchange="placeholder()">
-                        <option value="" selected disabled>Select filed for search</option>
-                        <?php foreach ($assoc as $i => $key) {  ?>
-                            <option value="<?php echo $i; ?>"><?php echo $i;  ?></option>
+                        <option value="" selected disabled>select from here</option>
+                        <?php for ($i = 0; $i < count($arrKey); $i++) {
+                            if ($arrKey[$i] == 'photo' || $arrKey[$i] == 'password') {
+                                continue;
+                            }  ?>
+                            <option value="<?php echo $arrKey[$i]; ?>"><?php echo $arrKey[$i];  ?></option>
                         <?php }   ?>
                     </select>
 
                 </div>
-                <input class="form-control mr-sm-2 ml-3" type="text" id="search" placeholder="select any filed for search" disabled onkeyup="searchData()">
             </form>
+            <!-- search form end -->
 
             <div class="d-flex user-data ml-3">
 
