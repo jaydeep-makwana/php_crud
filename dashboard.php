@@ -83,21 +83,22 @@ function checked($name, $value, $show)
 
             <form class="form-inline my-2 my-lg-0" method="post">
                 <div class="form-ckeck">
-                    <select name="search_dropdown" class="form-control" id="search_dropdown" onchange="atr()">
-                        <option value="id" <?php checked('search_dropdown', 'id', 'selected'); ?>>Id</option>
-                        <option value="firstName" <?php checked('search_dropdown', 'firstName', 'selected'); ?>>First Name</option>
-                        <option value="lastName" <?php checked('search_dropdown', 'lastName', 'selected'); ?>>Last Name</option>
-                        <option value="age" <?php checked('search_dropdown', 'age', 'selected'); ?>>Age</option>
-                        <option value="gender" <?php checked('search_dropdown', 'gender', 'selected'); ?>>Gender</option>
-                        <option value="department" <?php checked('search_dropdown', 'department', 'selected'); ?>>Department</option>
-                        <option value="date_of_join" <?php checked('search_dropdown', 'date_of_join', 'selected'); ?>>Date Of Joining</option>
-                        <option value="salary" <?php checked('search_dropdown', 'salary', 'selected'); ?>>Salary</option>
-                        <option value="email" <?php checked('search_dropdown', 'email', 'selected'); ?>>Email</option>
-                        <option value="hobby" <?php checked('search_dropdown', 'hobby', 'selected'); ?>>Hobby</option>
+                    <select class="form-control" id="search_dropdown" onchange="placeholder()">
+                        <option value="" selected disabled>Select filed for search</option>
+                        <option value="id">Id</option>
+                        <option value="firstName">First Name</option>
+                        <option value="lastName">Last Name</option>
+                        <option value="age">Age</option>
+                        <option value="gender">Gender</option>
+                        <option value="department">Department</option>
+                        <option value="date_of_join">Date Of Joining</option>
+                        <option value="salary">Salary</option>
+                        <option value="email">Email</option>
+                        <option value="hobby">Hobby</option>
 
                     </select>
                 </div>
-                <input class="form-control mr-sm-2 ml-3" type="search" placeholder="search by Id" name="search" id="search" onkeyup="searchData(this.value)">
+                <input class="form-control mr-sm-2 ml-3" type="text" id="search" placeholder="select any filed for search" disabled onkeyup="searchData()">
             </form>
 
             <div class="d-flex user-data ml-3">
@@ -218,14 +219,29 @@ function checked($name, $value, $show)
     </div>
 
     <script>
-        function searchData(data) {
+        let searchbar = document.getElementById("search");
+        let search_drop = document.getElementById("search_dropdown");
+        function placeholder() {
+ 
+
+                searchbar.placeholder = 'search by ' +search_drop.value; 
+                searchbar. disabled = false; 
+        }
+
+        function searchData() {
+            let str = {
+                srch_input: searchbar.value,
+                field: search_drop.value
+            }
+            str = JSON.stringify(str);
             let xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     document.getElementById("rows").innerHTML = this.response;
                 }
             }
-            xhr.open("GET", "search_data.php?q=" + data, true);
+
+            xhr.open("GET", "search_data.php?q=" + str, true);
             xhr.send();
         }
     </script>
