@@ -56,9 +56,6 @@ $result = mysqli_query($conn, $query);
 // $num = mysqli_num_rows($result);
 $assoc = mysqli_fetch_assoc($result);
 
-$arrKey = array_keys($assoc);
-
-
 ?>
 
 
@@ -96,11 +93,12 @@ $arrKey = array_keys($assoc);
 
                     <select class="form-control" id="search_dropdown" onchange="placeholder()">
                         <option value="" selected disabled>select from here</option>
-                        <?php for ($i = 0; $i < count($arrKey); $i++) {
-                            if ($arrKey[$i] == 'photo' || $arrKey[$i] == 'password') {
+                        <?php foreach($assoc as $i=>$key) {
+                            if ($i == 'photo' || $i == 'password') {
                                 continue;
-                            }  ?>
-                            <option value="<?php echo $arrKey[$i]; ?>"><?php echo $arrKey[$i];  ?></option>
+                            }
+                            ?>
+                            <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
                         <?php }   ?>
                     </select>
 
