@@ -46,12 +46,17 @@ function checked($name, $value, $show)
 }
 
 
+#fetch columns from database
+
+// Query to get columns from table
+$query = "SELECT * FROM user";
+
+$result = mysqli_query($conn, $query);
+
+// $num = mysqli_num_rows($result);
+$assoc = mysqli_fetch_assoc($result);
 
 ?>
-
-
-
-
 
 
 
@@ -83,20 +88,14 @@ function checked($name, $value, $show)
 
             <form class="form-inline my-2 my-lg-0" method="post">
                 <div class="form-ckeck">
+                    
                     <select class="form-control" id="search_dropdown" onchange="placeholder()">
                         <option value="" selected disabled>Select filed for search</option>
-                        <option value="id">Id</option>
-                        <option value="firstName">First Name</option>
-                        <option value="lastName">Last Name</option>
-                        <option value="age">Age</option>
-                        <option value="gender">Gender</option>
-                        <option value="department">Department</option>
-                        <option value="date_of_join">Date Of Joining</option>
-                        <option value="salary">Salary</option>
-                        <option value="email">Email</option>
-                        <option value="hobby">Hobby</option>
-
+                        <?php foreach ($assoc as $i => $key) {  ?>
+                            <option value="<?php echo $i; ?>"><?php echo $i;  ?></option>
+                        <?php }   ?>
                     </select>
+
                 </div>
                 <input class="form-control mr-sm-2 ml-3" type="text" id="search" placeholder="select any filed for search" disabled onkeyup="searchData()">
             </form>
@@ -221,11 +220,12 @@ function checked($name, $value, $show)
     <script>
         let searchbar = document.getElementById("search");
         let search_drop = document.getElementById("search_dropdown");
-        function placeholder() {
- 
 
-                searchbar.placeholder = 'search by ' +search_drop.value; 
-                searchbar. disabled = false; 
+        function placeholder() {
+
+
+            searchbar.placeholder = 'search by ' + search_drop.value;
+            searchbar.disabled = false;
         }
 
         function searchData() {

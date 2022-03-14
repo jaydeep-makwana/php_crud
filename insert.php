@@ -116,12 +116,13 @@ if (isset($_POST['submit'])) {
 
         $insertQuery = "INSERT INTO user (`firstName`,`lastName`,`age`,`gender`,`department`,`date_of_join`,`salary`,`email`,`password`, `hobby`,`photo`) VALUES ('$firstName','$lastName','$age','$gender','$department ','$dateOfJoin','$salary ','$email','$password','$ArrToString','$imagePath')";
         if (mysqli_query($conn, $insertQuery) && $movefile) {
-             
-           $alrt =   '<script> alert("data"); </script>'  ;
-            if ($alrt) {
-                # code...
-                header('location:login.php');
-            }
+             ?>
+   <script>
+       alert('you are successfully registerd');
+       location.replace('login.php');
+   </script>
+             <?php 
+
         } else {
             echo mysqli_error($conn);
         }
