@@ -95,13 +95,13 @@ function arrChecked($name, $value, $show)
 
                         <div class="form-check">
                             <label for="" class="form-check-label">
-                                <input type="radio" value="male" class="form-check-input" name="gender" <?php checked('gender', 'male', 'checked'); ?>> Male
+                                <input type="radio" value="Male" class="form-check-input" name="gender" <?php checked('gender', 'Male', 'checked'); ?>> Male
                             </label>
                         </div>
 
                         <div class="form-check">
                             <label for="" class="form-check-label">
-                                <input type="radio" value="female" class="form-check-input" name="gender" <?php checked('gender', 'female', 'checked'); ?>> Female
+                                <input type="radio" value="Female" class="form-check-input" name="gender" <?php checked('gender', 'Female', 'checked'); ?>> Female
                             </label>
                         </div>
 
