@@ -72,7 +72,7 @@ if (!$myData) {
         </div>
 
     </nav>
-
+ 
     <!-- show user's data in table -->
     <div class="table-responsive">
 
@@ -134,7 +134,9 @@ if (!$myData) {
 
             <tr>
                 <th>Password</th>
-                <td><?php echo base64_decode($myData['password']); ?> </td>
+                <td><input type="password" class="form-control" id="userPassword" value="<?php echo base64_decode($myData['password']); ?>" disabled>
+                <input type="text" class="form-control" id="uPass" value="<?php echo base64_decode($myData['password']); ?>" hidden> 
+                 <button id="showPass" class="btn btn-warning mt-1">Show</button></td>
             </tr>
 
             <tr>
@@ -151,6 +153,21 @@ if (!$myData) {
 
     </div>
 
+
+    
+<script>
+    function show(){
+
+        let modal  = prompt("Enter your password")
+        
+        if (modal == uPass.value ) {
+            
+            document.getElementById("userPassword").type = "text";
+        }
+        
+    }
+    document.getElementById("showPass").addEventListener('click',show);
+</script>
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
