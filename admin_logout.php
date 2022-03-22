@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-setcookie('aid',$_SESSION['aid'],time() - 60*10);
+setcookie('aid', $_SESSION['aid'], time() - 60 * 60 * 24 * 7);
 session_unset();
 session_destroy();
 header('location:login.php');

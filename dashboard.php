@@ -88,16 +88,19 @@ $assoc = mysqli_fetch_assoc($result);
 
             <!-- search form start -->
             <form class="form-inline my-2 my-lg-0" method="post">
-                <input class="form-control mr-sm-2 ml-3" type="text" id="search" placeholder="select any filed for search" disabled onkeyup="searchData()">
-                <div class="form-ckeck" width="5">
+                <!-- searching input -->
+                <input class="form-control mr-sm-2 ml-3"  id="search" placeholder="select any filed for search" disabled onkeyup="searchData()">
 
+
+                <!-- dropdowm for field -->
+                <div class="form-ckeck" width="5">
                     <select class="form-control" id="search_dropdown" onchange="placeholder()">
                         <option value="" selected disabled>select from here</option>
-                        <?php foreach($assoc as $i=>$key) {
+                        <?php foreach ($assoc as $i => $key) {
                             if ($i == 'photo' || $i == 'password') {
                                 continue;
                             }
-                            ?>
+                        ?>
                             <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
                         <?php }   ?>
                     </select>
@@ -175,7 +178,7 @@ $assoc = mysqli_fetch_assoc($result);
                 $selectTable = "SELECT * FROM user";
                 $result = mysqli_query($conn, $selectTable);
                 while ($myData = mysqli_fetch_assoc($result)) { ?>
-                    <tr>
+                    <tr id="row<?php echo $myData['id']; ?>">
                         <td class="table-light"> <?php echo $myData['id']; ?> </td>
                         <td class="table-light"><?php echo $myData['firstName']; ?> </td>
                         <td class="table-light"><?php echo $myData['lastName']; ?> </td>
@@ -188,29 +191,8 @@ $assoc = mysqli_fetch_assoc($result);
                         <td class="table-light"><?php echo base64_decode($myData['password']); ?> </td>
                         <td class="table-light"><?php echo $myData['hobby']; ?> </td>
                         <td class="table-light"> <img src="<?php echo $myData['photo']; ?>" alt="Network Error" hright='100px' width='100px'> </td>
-                        <td class="table-warning"><a href="update.php?upld_id=<?php echo $myData['id']; ?>"><button class="btn btn-warning">Update</button></a></td>
-                        <td class="table-danger"><button class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">DELETE</button></td>
-                        <!-- delete Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title text-danger" id="exampleModalLabel">Delete</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true" class="text-dark">&times;</span>
-                                        </button>
-
-                                    </div>
-                                    <div class="modal-body">
-                                        Do you really want to delete record?
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">cancel</button>
-                                        <a href="delete.php?del_id=<?php echo $myData['id']; ?>"><button class="btn btn-danger">DELETE</button></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <td class="table-warning"><a href="update.php?upld_id=<?php echo $myData['id'];  ?>"><button class="btn btn-warning">Update</button></a></td>
+                        <td class="table-danger"><button onclick="delete_data(<?php echo $myData['id']; ?>)" class="btn btn-danger">DELETE</button></td>
 
                     </tr>
                 <?php  }
@@ -223,34 +205,7 @@ $assoc = mysqli_fetch_assoc($result);
         </table>
     </div>
 
-    <script>
-        let searchbar = document.getElementById("search");
-        let search_drop = document.getElementById("search_dropdown");
 
-        function placeholder() {
-
-
-            searchbar.placeholder = 'search by ' + search_drop.value;
-            searchbar.disabled = false;
-        }
-
-        function searchData() {
-            let str = {
-                srch_input: searchbar.value,
-                field: search_drop.value
-            }
-            str = JSON.stringify(str);
-            let xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("rows").innerHTML = this.response;
-                }
-            }
-
-            xhr.open("GET", "search_data.php?q=" + str, true);
-            xhr.send();
-        }
-    </script>
 
 
     <script src="./Assets/./JS/serch.js"></script>

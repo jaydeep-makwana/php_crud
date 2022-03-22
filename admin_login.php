@@ -34,7 +34,7 @@
 
             if ($uname == $fetch_array['userName'] && $pass == $fetch_array['password']) {
                 $_SESSION['aid'] = $fetch_array['id'];
-                setcookie('aid', $fetch_array['id'], time() + 60 * 10);
+                setcookie('aid', $fetch_array['id'], time() + 60 * 60 * 24 * 7);
                 header('location:dashboard.php');
             } else {
                 $loginErr = "username or password invalid";
