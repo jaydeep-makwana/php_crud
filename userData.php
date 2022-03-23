@@ -134,12 +134,12 @@ if (!$myData) {
 
             <tr>
                 <th>Password</th>
-                <td><input type="text" class="form-control" id="userPassword" value="<?php echo base64_decode($myData['password']); ?>" readonly>
+                <td><input type="password" class="form-control" id="userPassword" value="<?php echo base64_decode($myData['password']); ?>" readonly>
                     <input type="text" class="form-control" id="uPass" value="<?php echo base64_decode($myData['password']); ?>" hidden>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-unlock-fill" viewBox="0 0 16 16">
-                        <path d="M11 1a2 2 0 0 0-2 2v4a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h5V3a3 3 0 0 1 6 0v4a.5.5 0 0 1-1 0V3a2 2 0 0 0-2-2z" />
-                    </svg>
-                    <!-- <button id="showPass" class="btn btn-warning mt-1">Show</button> -->
+                    <div class="form-check showPassword">
+                        <input type="checkbox" class="form-check-input" id="showPass">
+                        <label for="signInPass" class="form-check-label">show password</label>
+                    </div>
                 </td>
             </tr>
 
