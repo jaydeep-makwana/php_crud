@@ -4,12 +4,12 @@ session_start();
 
 # admin code
 if (!isset($_SESSION['aid'])) {
-    header('location:login.php');
+    $_SESSION['aid'] = $_COOKIE['aid'];
 }
 
 if (!isset($_SESSION['aid'])) {
-    $_SESSION['aid'] = $_COOKIE['aid'];
-}
+    header('location:login.php');
+}    
 
 # select data from admin table
 $id = $_SESSION['aid'];

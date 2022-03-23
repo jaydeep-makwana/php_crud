@@ -42,7 +42,7 @@ if (!$myData) {
 
 
 <body class="user-bg">
-<!-- navbar -->
+    <!-- navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark  ">
 
         <img src="./Assets/./image/ms.png" width="100px" alt="">
@@ -72,7 +72,7 @@ if (!$myData) {
         </div>
 
     </nav>
- 
+
     <!-- show user's data in table -->
     <div class="table-responsive">
 
@@ -134,9 +134,13 @@ if (!$myData) {
 
             <tr>
                 <th>Password</th>
-                <td><input type="password" class="form-control" id="userPassword" value="<?php echo base64_decode($myData['password']); ?>" disabled>
-                <input type="text" class="form-control" id="uPass" value="<?php echo base64_decode($myData['password']); ?>" hidden> 
-                 <button id="showPass" class="btn btn-warning mt-1">Show</button></td>
+                <td><input type="text" class="form-control" id="userPassword" value="<?php echo base64_decode($myData['password']); ?>" readonly>
+                    <input type="text" class="form-control" id="uPass" value="<?php echo base64_decode($myData['password']); ?>" hidden>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-unlock-fill" viewBox="0 0 16 16">
+                        <path d="M11 1a2 2 0 0 0-2 2v4a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h5V3a3 3 0 0 1 6 0v4a.5.5 0 0 1-1 0V3a2 2 0 0 0-2-2z" />
+                    </svg>
+                    <!-- <button id="showPass" class="btn btn-warning mt-1">Show</button> -->
+                </td>
             </tr>
 
             <tr>
@@ -154,20 +158,20 @@ if (!$myData) {
     </div>
 
 
-    
-<script>
-    function show(){
 
-        let modal  = prompt("Enter your password")
-        
-        if (modal == uPass.value ) {
-            
-            document.getElementById("userPassword").type = "text";
+    <script>
+        function show() {
+
+            let modal = prompt("Enter your password")
+
+            if (modal == uPass.value) {
+
+                document.getElementById("userPassword").type = "text";
+            }
+
         }
-        
-    }
-    document.getElementById("showPass").addEventListener('click',show);
-</script>
+        document.getElementById("showPass").addEventListener('click', show);
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>

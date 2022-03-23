@@ -4,12 +4,13 @@ include 'config.php';
 session_start();
 
 if (!isset($_SESSION['id'])) {
-    header('location:login.php');
+    $_SESSION['id'] = $_COOKIE['id'];
 }
 
 if (!isset($_SESSION['id'])) {
-    $_SESSION['id'] = $_COOKIE['id'];
+    header('location:login.php');
 }
+
 # get user's id by logged user
 $id = $_SESSION['id'];
 

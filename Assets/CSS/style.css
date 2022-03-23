@@ -70,6 +70,10 @@ nav {
     cursor: pointer;
 }
 
+#showPass {
+    color: aliceblue;
+}
+
 
 /* admin related css */
 
