@@ -71,7 +71,16 @@ nav {
 }
 
 #showPass {
-    color: aliceblue;
+    color: rgb(255, 255, 255);
+    position: absolute;
+    cursor: pointer;
+    margin: 10px 0 0 90px;
+}
+
+#userPassword {
+    background: none;
+    color: white;
+    cursor: pointer;
 }
 
 
