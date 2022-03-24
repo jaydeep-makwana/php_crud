@@ -143,23 +143,14 @@ function password()
 
             <tr>
                 <th>Password</th>
-<<<<<<< Updated upstream
-                <td><input type="password" class="form-control" id="userPassword" value="<?php echo base64_decode($myData['password']); ?>" readonly>
-                    <input type="text" class="form-control" id="uPass" value="<?php echo base64_decode($myData['password']); ?>" hidden>
-                    <div class="form-check showPassword">
-                        <input type="checkbox" class="form-check-input" id="showPass">
-                        <label for="signInPass" class="form-check-label">show password</label>
-=======
                 <td>
-                <div id="pass-area">
 
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16" id="showPass">
-                        <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
-                        <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
-                    </svg>
-                    <input type="text" class="form-control" id="userPassword" value="<?php password(); ?>" readonly>
->>>>>>> Stashed changes
-                    </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16" id="showPass">
+                            <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+                            <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+                        </svg>
+                        <input type="text" class="form-control" id="userPassword" value="<?php password(); ?>" readonly>
+
                 </td>
             </tr>
 
@@ -192,7 +183,7 @@ function password()
 
                 document.getElementById("userPassword").value = password;
                 document.querySelector("#showPass").style.display = "none";
-            }else{
+            } else {
                 alert('please enter correct password');
             }
 
