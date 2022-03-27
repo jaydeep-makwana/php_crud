@@ -9,7 +9,7 @@ if (!isset($_SESSION['aid'])) {
 
 if (!isset($_SESSION['aid'])) {
     header('location:login.php');
-}    
+}
 
 # select data from admin table
 $id = $_SESSION['aid'];
@@ -68,6 +68,7 @@ $assoc = mysqli_fetch_assoc($result);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/bootstrap-4.6.1-dist/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/CSS/style.css">
     <title>Document</title>
 </head>
@@ -89,7 +90,7 @@ $assoc = mysqli_fetch_assoc($result);
             <!-- search form start -->
             <form class="form-inline my-2 my-lg-0" method="post">
                 <!-- searching input -->
-                <input class="form-control mr-sm-2 ml-3"  id="search" placeholder="select any filed for search" disabled onkeyup="searchData()">
+                <input class="form-control mr-sm-2 ml-3" id="search" placeholder="select any filed for search" disabled onkeyup="searchData()">
 
 
                 <!-- dropdowm for field -->
@@ -191,10 +192,34 @@ $assoc = mysqli_fetch_assoc($result);
                         <td class="table-light"><?php echo base64_decode($myData['password']); ?> </td>
                         <td class="table-light"><?php echo $myData['hobby']; ?> </td>
                         <td class="table-light"> <img src="<?php echo $myData['photo']; ?>" alt="Network Error" hright='100px' width='100px'> </td>
-                        <td class="table-warning"><a href="update.php?upld_id=<?php echo $myData['id'];  ?>"><button class="btn btn-warning">Update</button></a></td>
+                        <!-- <td class="table-warning"><a href="update.php?upld_id=<?php // echo $myData['id']; 
+                                                                                    ?>"><button class="btn btn-warning">Update</button></a></td> -->
+                        <td class="table-warning"><button class="btn btn-warning" onclick="update(<?php echo $myData['id']; ?>)">Update</button></td>
                         <td class="table-danger"><button onclick="delete_data(<?php echo $myData['id']; ?>)" class="btn btn-danger">DELETE</button></td>
 
                     </tr>
+
+                    <!-- # UPDATE modal -->
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                  <div id="data"></div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Modal finish -->
+
                 <?php  }
 
 
@@ -206,31 +231,22 @@ $assoc = mysqli_fetch_assoc($result);
     </div>
 
 
-    <!-- # UPDATE modal -->
-    <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
-</button>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
 
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <script>
+        let modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('myModal')) // Returns a Bootstrap modal instance
+        let data = document.getElementById('data'); // Returns a Bootstrap modal instance
+        // Show or hide:
+        function update(id) {
+            data.innerHTML = id;
+            modal.show();
+        }
+        // modal.hide();
+    </script>
 
     <script src="./Assets/./JS/delete.js"></script>
     <script src="./Assets/./JS/search.js"></script>
