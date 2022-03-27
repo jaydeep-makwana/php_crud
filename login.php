@@ -150,7 +150,7 @@ function setValue($value)
         </div>
 
 
-        <div class="col-lg-4 form-bg-admin    mx-auto">
+        <div class="col-lg-4 form-bg-admin mx-auto">
 
             <form method="post">
                 <h1 class="text-center p-3"> Admin Log in</h1>

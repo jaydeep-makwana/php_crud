@@ -24,16 +24,7 @@ $myData = mysqli_fetch_assoc($rslt);
 if (!$myData) {
     echo mysqli_error($conn);
 }
-
-function password()
-{
-    global $myData;
-    $pass_length = strlen(base64_decode($myData['password']));
-    for ($i = 0; $i < $pass_length; $i++) {
-        echo "*";
-    }
-}
-
+ 
 ?>
 
 
@@ -145,11 +136,11 @@ function password()
                 <th>Password</th>
                 <td>
 
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16" id="showPass">
-                            <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
-                            <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
-                        </svg>
-                        <input type="text" class="form-control" id="userPassword" value="<?php password(); ?>" readonly>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16" id="showPass">
+                        <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+                        <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+                    </svg>
+                    <input type="text" class="form-control" id="userPassword" readonly>
 
                 </td>
             </tr>
@@ -172,19 +163,25 @@ function password()
 
     <script>
         document.getElementById("showPass").addEventListener('click', show);
+        let passValue = document.getElementById("userPassword");
+        let password = "<?php echo base64_decode($myData['password']); ?>";
+        let star = "";
+        for (let index = 0; index < password.length; index++) {
+            star = star + '*';
+        }
+        passValue.value = star;
 
         function show() {
 
             let modal = prompt("Enter your password");
-            let password = "<?php echo base64_decode($myData['password']); ?>";
-            console.log(password);
-
-            if (modal == password) {
-
-                document.getElementById("userPassword").value = password;
-                document.querySelector("#showPass").style.display = "none";
+            if (modal == "") {
+                alert('enter your password');
             } else {
-                alert('please enter correct password');
+                if (modal == password) {
+
+                    passValue.value = password;
+                    document.querySelector("#showPass").style.display = "none";
+                }
             }
 
         }
