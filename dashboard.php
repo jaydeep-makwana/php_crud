@@ -12,20 +12,14 @@ if (!isset($_SESSION['aid'])) {
 }
 
 # select data from admin table
-$id = $_SESSION['aid'];
-$searchTable = "SELECT * FROM admin WHERE id = $id";
-$rslt = mysqli_query($conn, $searchTable);
+// $id = $_SESSION['aid'];
+// $selectTable = "SELECT * FROM admin WHERE id = $id";
+// $result = mysqli_query($conn, $selectTable);
 
-if (!$rslt) {
-    echo mysqli_error($conn);
-}
+// if (!$result) {
+//     echo mysqli_error($conn);
+// }
 
-$myData = mysqli_fetch_assoc($rslt);
-if (!$myData) {
-    echo mysqli_error($conn);
-}
-
-$welcome = "hello " . $myData['userName'] . ", Welcome!!";
 
 # user code
 
@@ -41,19 +35,12 @@ function checked($name, $value, $show)
 {
     if (isset($_POST[$name])) {
         if ($_POST[$name] == $value)
-            echo  $show;
+        echo  $show;
     }
 }
 
-
-#fetch columns from database
-
-// Query to get columns from table
-$query = "SELECT * FROM user";
-
-$result = mysqli_query($conn, $query);
-
-// $num = mysqli_num_rows($result);
+$selectTable = "SELECT * FROM user";
+$result = mysqli_query($conn, $selectTable);
 $assoc = mysqli_fetch_assoc($result);
 
 ?>
@@ -70,7 +57,7 @@ $assoc = mysqli_fetch_assoc($result);
     <link rel="stylesheet" href="assets/bootstrap-4.6.1-dist/css/bootstrap.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/CSS/style.css">
-    <title>Document</title>
+    <title>Dashboard</title>
 </head>
 
 <body>
@@ -98,7 +85,7 @@ $assoc = mysqli_fetch_assoc($result);
                     <select class="form-control" id="search_dropdown" onchange="placeholder()">
                         <option value="" selected disabled>select from here</option>
                         <?php foreach ($assoc as $i => $key) {
-                            if ($i == 'photo' || $i == 'password') {
+                            if ($i == 'photo' | $i == 'password' | $i == 'gender') {
                                 continue;
                             }
                         ?>
@@ -123,7 +110,7 @@ $assoc = mysqli_fetch_assoc($result);
 
                             <div class="modal-header">
 
-                                <h2><?php echo $myData['userName']; ?></h2>
+                                <h2>Admin</h2>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -176,8 +163,7 @@ $assoc = mysqli_fetch_assoc($result);
                 <?php
 
                 # fetch data from user table
-                $selectTable = "SELECT * FROM user";
-                $result = mysqli_query($conn, $selectTable);
+
                 while ($myData = mysqli_fetch_assoc($result)) { ?>
                     <tr id="row<?php echo $myData['id']; ?>">
                         <td class="table-light"> <?php echo $myData['id']; ?> </td>
@@ -192,33 +178,11 @@ $assoc = mysqli_fetch_assoc($result);
                         <td class="table-light"><?php echo base64_decode($myData['password']); ?> </td>
                         <td class="table-light"><?php echo $myData['hobby']; ?> </td>
                         <td class="table-light"> <img src="<?php echo $myData['photo']; ?>" alt="Network Error" hright='100px' width='100px'> </td>
-                        <!-- <td class="table-warning"><a href="update.php?upld_id=<?php // echo $myData['id']; 
-                                                                                    ?>"><button class="btn btn-warning">Update</button></a></td> -->
-                        <td class="table-warning"><button class="btn btn-warning" onclick="update(<?php echo $myData['id']; ?>)">Update</button></td>
+                        <td class="table-warning"><a href="update.php?update_id=<?php echo $myData['id']; ?>"><button class="btn btn-warning">Update</button></a></td>
                         <td class="table-danger"><button onclick="delete_data(<?php echo $myData['id']; ?>)" class="btn btn-danger">DELETE</button></td>
 
                     </tr>
 
-                    <!-- # UPDATE modal -->
-                    <!-- Modal -->
-                    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                  <div id="data"></div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Modal finish -->
 
                 <?php  }
 
@@ -236,18 +200,6 @@ $assoc = mysqli_fetch_assoc($result);
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
-    <script>
-        let modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('myModal')) // Returns a Bootstrap modal instance
-        let data = document.getElementById('data'); // Returns a Bootstrap modal instance
-        // Show or hide:
-        function update(id) {
-            data.innerHTML = id;
-            modal.show();
-        }
-        // modal.hide();
-    </script>
-
     <script src="./Assets/./JS/delete.js"></script>
     <script src="./Assets/./JS/search.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

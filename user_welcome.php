@@ -17,19 +17,21 @@ $id = $_SESSION['id'];
 # fetch data by logged user
 $searchTable = "SELECT * FROM user WHERE id = $id";
 $rslt = mysqli_query($conn, $searchTable);
+$myData = mysqli_fetch_assoc($rslt);
 
 if (!$rslt) {
     echo mysqli_error($conn);
 }
-$myData = mysqli_fetch_assoc($rslt);
 if (!$myData) {
     echo mysqli_error($conn);
 }
-$welcome = "hello " . $myData['firstName'] . ", Welcome!!"
+$welcome_msg = "Hello " . $myData['firstName'] . ", Welcome!!" ;
 
+# Find data of user
+// $fetchData = "SELECT * FROM user";
+// $rslt = mysqli_query($conn, $fetchData);
+// $myData = mysqli_fetch_assoc($rslt);
 ?>
-
-
 
 
 <!DOCTYPE html>
@@ -41,7 +43,7 @@ $welcome = "hello " . $myData['firstName'] . ", Welcome!!"
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/./bootstrap-4.6.1-dist/./css/./bootstrap.min.css">
     <link rel="stylesheet" href="Assets/CSS/style.css">
-    <title>Document</title>
+    <title>Welcome</title>
 </head>
 
 
@@ -108,17 +110,11 @@ $welcome = "hello " . $myData['firstName'] . ", Welcome!!"
     <!-- welcome message of logged user -->
     <div class="container-fluid wel_msg_bg mx-auto p-0">
 
-        <h1 class="text-white p-5"> <?php echo $welcome; ?> </h1>
+        <h1 class="text-white p-5"> <?php echo $welcome_msg; ?> </h1>
 
         <h3 class="m-5 text-justify text-center">Microsoft Corporation is a company that makes computer software and video games. Bill Gates and Paul Allen founded the company in 1975. Microsoft makes Microsoft Windows, Microsoft Office (including Microsoft Word), Edge, MSN and Xbox, among others. Most Microsoft programs cannot be downloaded for free - people have to buy them in a shop or online. Some products (like the Windows operating system) are often already installed when people buy a new computer.</h3>
 
     </div>
-
-
-
-
-
-
 
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

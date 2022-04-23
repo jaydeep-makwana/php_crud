@@ -29,11 +29,11 @@ if (isset($_POST['submit'])) {
     }
 
     $email = $_POST['email'];
-    $pass = $_POST['password'];
+    $password= $_POST['password'];
 
     $selectEmail = "SELECT * FROM user WHERE email = '$email' ";
-    $query = mysqli_query($conn, $selectEmail);
-    $num_row = mysqli_num_rows($query);
+    $result = mysqli_query($conn, $selectEmail);
+    $email_exist = mysqli_num_rows($result);
 
 
     if (empty($_POST['fName'])) {
@@ -41,19 +41,19 @@ if (isset($_POST['submit'])) {
     } elseif (!preg_match("/^[a-zA-Z]*$/", $_POST['fName'])) {
         $fNameErr = 'only enter alphabet ';
     } elseif (empty($_POST['lName'])) {
-        $lNameErr = 'last name shold be not empty ';
+        $lNameErr = 'last name should be not empty ';
     } elseif (!preg_match("/^[a-zA-Z]*$/", $_POST['lName'])) {
         $lNameErr = 'only enter alphabet ';
     } elseif (empty($_POST['age'])) {
-        $ageErr = 'age shold be not empty ';
+        $ageErr = 'age should be not empty ';
     } elseif (!preg_match("/\d/", $_POST['age'])) {
         $ageErr = 'age must be in digit';
     } elseif ($_POST['age'] < 18) {
-        $ageErr = 'age shold not be less than 18 ';
+        $ageErr = 'age should not be less than 18 ';
     } elseif (empty($_POST['gender'])) {
         $genErr = 'gender should be not empty';
     } elseif (empty($_POST['department'])) {
-        $depErr = 'please enter your department';
+        $depErr = 'please choose your department';
     } elseif (empty($_POST['doj'])) {
         $dojErr = 'when did you join this company?';
     } elseif ($_POST['doj'] > date('Y-m-d')) {
@@ -63,30 +63,30 @@ if (isset($_POST['submit'])) {
     } elseif (!preg_match("/\d/", $_POST['salary'])) {
         $salaryErr = 'salary must be in digit';
     } elseif ($_POST['salary'] < 1) {
-        $salaryErr = 'salary shold not be less than 1 ';
+        $salaryErr = 'salary should not be less than 1 ';
     } elseif (!preg_match("/\d/", $_POST['salary'])) {
         $salaryErr = 'salary must be in digit';
     } elseif (empty($_POST['email'])) {
         $emailErr = 'email should be not empty';
     } elseif (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
         $emailErr = 'email invalid';
-    } elseif ($num_row) {
+    } elseif ($email_exist) {
         $emailErr = 'this email is already registered';
-    } elseif (empty($pass)) {
+    } elseif (empty($password)) {
         $passwordErr = 'Password should be not empty';
-    } elseif (!preg_match("/[A-Z]/", $pass)) {
+    } elseif (!preg_match("/[A-Z]/", $password)) {
         $passwordErr = 'Password should contain at least one Capital Letter';
-    } elseif (!preg_match("/[a-z]/", $_POST['password'])) {
+    } elseif (!preg_match("/[a-z]/", $password)) {
         $passwordErr = 'Password should contain at least one small Letter';
-    } elseif (!preg_match("/\d/", $_POST['password'])) {
+    } elseif (!preg_match("/\d/", $password)) {
         $passwordErr = 'Password should contain at least one digit';
-    } elseif (!preg_match("/\W/", $_POST['password'])) {
+    } elseif (!preg_match("/\W/", $password)) {
         $passwordErr = 'Password should contain at least one special character';
-    } elseif (strlen($pass) < 8) {
+    } elseif (strlen($password) < 8) {
         $passwordErr = 'Password should be 8 characters';
     } elseif (empty($_POST['cPassword'])) {
         $cPasswordErr = 'enter your confirm password';
-    } elseif ($_POST['cPassword'] != $_POST['password']) {
+    } elseif ($_POST['cPassword'] != $password) {
         $cPasswordErr = 'password and confirm password are not match';
     } elseif (empty($_POST['hobby'])) {
         $hobbyErr = 'hobby should be not empty';
@@ -158,30 +158,30 @@ if (isset($_POST['add_user'])) {
     }
  
     $email = $_POST['email'];
-    $pass = $_POST['password'];
+    $password= $_POST['password'];
 
     $selectEmail = "SELECT * FROM user WHERE email = '$email' ";
-    $query = mysqli_query($conn, $selectEmail);
-    $num_row = mysqli_num_rows($query);
+    $result = mysqli_query($conn, $selectEmail);
+    $email_exist = mysqli_num_rows($result);
 
     if (empty($_POST['fName'])) {
         $fNameErr = 'first name should be not empty';
     } elseif (!preg_match("/^[a-zA-Z]*$/", $_POST['fName'])) {
         $fNameErr = 'only enter alphabet ';
     } elseif (empty($_POST['lName'])) {
-        $lNameErr = 'last name shold be not empty ';
+        $lNameErr = 'last name should be not empty ';
     } elseif (!preg_match("/^[a-zA-Z]*$/", $_POST['lName'])) {
         $lNameErr = 'only enter alphabet ';
     } elseif (empty($_POST['age'])) {
-        $ageErr = 'age shold be not empty ';
+        $ageErr = 'age should be not empty ';
     } elseif (!preg_match("/\d/", $_POST['age'])) {
         $ageErr = 'age must be in digit';
     } elseif ($_POST['age'] < 18) {
-        $ageErr = 'age shold not be less than 18 ';
+        $ageErr = 'age should not be less than 18 ';
     } elseif (empty($_POST['gender'])) {
         $genErr = 'gender should be not empty';
     } elseif (empty($_POST['department'])) {
-        $depErr = 'please enter your department';
+        $depErr = 'please choose your department';
     } elseif (empty($_POST['doj'])) {
         $dojErr = 'when did you join this company?';
     } elseif ($_POST['doj'] > date('Y-m-d')) {
@@ -191,26 +191,26 @@ if (isset($_POST['add_user'])) {
     } elseif (!preg_match("/\d/", $_POST['salary'])) {
         $salaryErr = 'salary must be in digit';
     } elseif ($_POST['salary'] < 1) {
-        $salaryErr = 'salary shold not be less than 1 ';
+        $salaryErr = 'salary should not be less than 1 ';
     } elseif (!preg_match("/\d/", $_POST['salary'])) {
         $salaryErr = 'salary must be in digit';
     } elseif (empty($_POST['email'])) {
         $emailErr = 'email should be not empty';
     } elseif (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
         $emailErr = 'email invalid';
-    } elseif ($num_row) {
+    } elseif ($email_exist) {
         $emailErr = 'this email is already registered';
-    } elseif (empty($pass)) {
+    } elseif (empty($password)) {
         $passwordErr = 'Password should be not empty';
-    } elseif (!preg_match("/[A-Z]/", $pass)) {
+    } elseif (!preg_match("/[A-Z]/", $password)) {
         $passwordErr = 'Password should contain at least one Capital Letter';
-    } elseif (!preg_match("/[a-z]/", $_POST['password'])) {
+    } elseif (!preg_match("/[a-z]/", $password)) {
         $passwordErr = 'Password should contain at least one small Letter';
-    } elseif (!preg_match("/\d/", $_POST['password'])) {
+    } elseif (!preg_match("/\d/", $password)) {
         $passwordErr = 'Password should contain at least one digit';
-    } elseif (!preg_match("/\W/", $_POST['password'])) {
+    } elseif (!preg_match("/\W/", $password)) {
         $passwordErr = 'Password should contain at least one special character';
-    } elseif (strlen($pass) < 8) {
+    } elseif (strlen($password) < 8) {
         $passwordErr = 'Password should be 8 characters';
     } elseif (empty($_POST['cPassword'])) {
         $cPasswordErr = 'enter your confirm password';

@@ -3,24 +3,25 @@ include 'config.php';
 session_start();
 
 if (!isset($_SESSION['id'])) {
-    header('location:user_login.php');
+    $_SESSION['id'] = $_COOKIE['id'];
 }
 
 if (!isset($_SESSION['id'])) {
-    $_SESSION['id'] = $_COOKIE['id'];
+    header('location:user_login.php');
 }
+ 
 
 # get user's id by logged user
 $id = $_SESSION['id'];
 
 # fetch data of logged user
 $searchTable = "SELECT * FROM user WHERE id = $id";
-$rslt = mysqli_query($conn, $searchTable);
+$result = mysqli_query($conn, $searchTable);
 
-if (!$rslt) {
+if (!$result) {
     echo mysqli_error($conn);
 }
-$myData = mysqli_fetch_assoc($rslt);
+$myData = mysqli_fetch_assoc($result);
 if (!$myData) {
     echo mysqli_error($conn);
 }
@@ -37,7 +38,7 @@ if (!$myData) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/./bootstrap-4.6.1-dist/./css/./bootstrap.min.css">
     <link rel="stylesheet" href="Assets/CSS/style.css">
-    <title>Document</title>
+    <title>Your _Details</title>
 </head>
 
 

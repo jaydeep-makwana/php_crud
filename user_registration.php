@@ -1,6 +1,7 @@
 <?php
 include('insert.php');
 session_start();
+
 if (isset($_SESSION['id'])) {
     header('location:user_welcome.php');
 }
@@ -59,18 +60,21 @@ function arrChecked($name, $value, $show)
                 <div class="col-lg-6 ">
 
                     <div class="form-group">
-                        <label for="" class="">First Name</label> <small> * <?php echo $fNameErr;   ?> </small>
+                        <label for="" class="">First Name</label> 
                         <input class="form-control" type="text" name="fName" value="<?php setValue('fName'); ?>">
+                        <small> * <?php echo $fNameErr; ?> </small>
                     </div>
 
                     <div class="form-group">
-                        <label for="">Last Name</label> <small>* <?php echo $lNameErr;   ?> </small>
+                        <label for="">Last Name</label> 
                         <input class="form-control" type="text" name="lName" value="<?php setValue('lName'); ?>">
+                        <small>* <?php echo $lNameErr; ?> </small>
                     </div>
 
                     <div class="form-group">
-                        <label for="">Age</label> <small>* <?php echo $ageErr;   ?> </small>
+                        <label for="">Age</label> 
                         <input type="text" class="form-control" name="age" value="<?php setValue('age'); ?>">
+                        <small>* <?php echo $ageErr; ?> </small>
                     </div>
 
 
@@ -91,7 +95,7 @@ function arrChecked($name, $value, $show)
 
 
                     <div class="form-ckeck">
-                        <label for="department">Department <small> * <?php echo $depErr;  ?> </small>
+                        <label for="department">Department 
                             <select name="department" class="form-control" id="department">
                                 <option value="" selected disabled>---Choose Department</option>
                                 <option value="R & D" <?php checked('department', 'R & D', 'selected'); ?>>R & D</option>
@@ -99,17 +103,20 @@ function arrChecked($name, $value, $show)
                                 <option value="Marketing" <?php checked('department', 'Marketing', 'selected'); ?>>Marketing</option>
                                 <option value="HR" <?php checked('department', 'HR', 'selected'); ?>>HR</option>
                             </select>
+                            <small> * <?php echo $depErr;  ?> </small>
                         </label>
                     </div>
 
                     <div class="form-group">
-                        <label for="">Date Of Join</label> <small> * <?php echo $dojErr; ?> </small>
+                        <label for="">Date Of Join</label>
                         <input type="date" class="form-control" name="doj" value="<?php setValue('doj'); ?>">
+                        <small> * <?php echo $dojErr; ?> </small>
                     </div>
 
                     <div class="form-group">
-                        <label for="">Salary</label> <small> * <?php echo $salaryErr;  ?> </small>
+                        <label for="">Salary</label> 
                         <input type="text" class="form-control" name="salary" value="<?php setValue('salary'); ?>">
+                        <small> * <?php echo $salaryErr;  ?> </small>
                     </div>
 
                 </div>
@@ -118,18 +125,21 @@ function arrChecked($name, $value, $show)
                 <div class="col-lg-6  ">
 
                     <div class="form-group">
-                        <label for="">Email</label> <small> * <?php echo $emailErr;  ?> </small>
+                        <label for="">Email</label> 
                         <input type="text" class="form-control" name="email" value="<?php setValue('email'); ?>">
+                        <small> * <?php echo $emailErr;  ?> </small>
                     </div>
 
                     <div class="form-group">
-                        <label for="password">Password</label><small> * <?php echo $passwordErr;  ?> </small>
+                        <label for="password">Password</label>
                         <input type="password" class="form-control" name="password" id="password" value="<?php setValue('password'); ?>">
+                        <small> * <?php echo $passwordErr;  ?> </small>
                     </div>
 
                     <div class="form-group">
-                        <label for="cPassword">Confirm Password</label> <small> * <?php echo $cPasswordErr;  ?> </small>
+                        <label for="cPassword">Confirm Password</label> 
                         <input type="password" class="form-control" name="cPassword" id="cPassword" value="<?php setValue('cPassword'); ?>">
+                        <small> * <?php echo $cPasswordErr;  ?> </small>
                     </div>
 
                     <div class="form-check showPassword">
@@ -164,8 +174,9 @@ function arrChecked($name, $value, $show)
 
 
                     <div class="form-group">
-                        <label for="exampleFormControlFile1">Upload Your Photo</label> <small> * <?php echo $fileErr;  ?> </small>
+                        <label for="exampleFormControlFile1">Upload Your Photo</label> 
                         <input type="file" name="file" class="form-control-file" id="exampleFormControlFile1">
+                        <small> * <?php echo $fileErr;  ?> </small>
                     </div>
 
                     <input type="submit" name="submit" class="btn btn-primary">

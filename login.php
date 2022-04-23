@@ -3,7 +3,7 @@ include 'config.php';
 session_start();
 
 # user login logic
-
+ 
 if (isset($_SESSION['id'])) {
     header('location:user_welcome.php');
 }
@@ -23,12 +23,12 @@ if (isset($_POST['submit'])) {
     } else {
         $selectTable = "SELECT * FROM user WHERE email ='$email'";
         $query = mysqli_query($conn, $selectTable);
-        $num_rows = mysqli_num_rows($query);
-        $arr = mysqli_fetch_assoc($query);
-        if ($num_rows) {
+        $check_email = mysqli_num_rows($query);
+        $assoc = mysqli_fetch_assoc($query);
+        if ($check_email) {
 
-            if ($arr['password'] == base64_encode($pass)) {
-                $_SESSION['id'] = $arr['id'];
+            if ($assoc['password'] == base64_encode($pass)) {
+                $_SESSION['id'] = $assoc['id'];
                 setcookie('id', $_SESSION['id'], time() + 60 * 10);
                 header('location:user_welcome.php');
             } else {
@@ -39,6 +39,8 @@ if (isset($_POST['submit'])) {
         }
     }
 }
+
+
 
 
 # admin login logic
@@ -58,6 +60,12 @@ if (!$tblQuery) {
     $createTable = "CREATE TABLE  admin ( id int(10) NOT NULL AUTO_INCREMENT PRIMARY KEY, userName varchar(100) NOT NULL, password varchar(100) NOT NULL )";
     if (!mysqli_query($conn, $createTable)) {
         echo mysqli_errno($conn);
+
+        # insert data in admin table for admin login 
+        $insertData = "INSERT INTO `admin` (`userName`,`password`) VALUES('admin','123')";
+        if (!mysqli_query($conn,$insertData)) {
+            echo mysqli_error($conn);
+        }
     }
 }
 
@@ -71,12 +79,12 @@ if (isset($_POST['asubmit'])) {
     } else {
 
 
-        $uname = $_POST['userName'];
-        $pass = $_POST['password'];
+        $userName = $_POST['userName'];
+        $password = $_POST['password'];
 
         $fetch_array = mysqli_fetch_assoc($tblQuery);
 
-        if ($uname == $fetch_array['userName'] && $pass == $fetch_array['password']) {
+        if ($userName == $fetch_array['userName'] && $password == $fetch_array['password']) {
             $_SESSION['aid'] = $fetch_array['id'];
             setcookie('aid', $fetch_array['id'], time() + 60 * 10);
             header('location:dashboard.php');

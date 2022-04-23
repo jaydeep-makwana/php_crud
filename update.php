@@ -3,7 +3,7 @@ include 'config.php';
 session_start();
 
 # get id from user's id
-$id = $_GET['upld_id'];
+$id = $_GET['update_id'];
 
 # fetch data from user's table
 $select_data = "SELECT * FROM user WHERE id = $id";
@@ -155,7 +155,7 @@ if (isset($_POST['submit'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/./bootstrap-4.6.1-dist/./css/./bootstrap.min.css">
     <link rel="stylesheet" href="Assets/CSS/style.css">
-    <title>welcome user </title>
+    <title>Update_User</title>
 </head>
 
 <body class="admin-bg">
@@ -319,7 +319,7 @@ if (isset($_POST['submit'])) {
                     </div>
 
                     <input type="submit" name="submit" value='Update' class="btn btn-primary">
-                    <a href="dashboard.php" class="btn btn-warning">Back </a>
+                    <a href="dashboard.php" class="btn btn-warning"> Back </a>
 
                 </div>
 
