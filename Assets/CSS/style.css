@@ -4,13 +4,6 @@ body {
 }
 
 
-/* error css */
-
-small {
-    color: red;
-}
-
-
 /* home page css */
 
 .main {
@@ -23,6 +16,12 @@ small {
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
+}
+
+.background {
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+    border-radius: 10px;
 }
 
 
@@ -124,16 +123,10 @@ nav {
     margin-top: 12%;
 }
 
-.form-bg-user {
+.login-form-bg {
     color: rgb(255, 255, 255);
-    border: 2px solid rgb(119, 243, 212);
-    border-radius: 5px;
-}
-
-.form-bg-admin {
-    color: rgb(255, 255, 255);
-    border: 2px solid rgb(80 255 255);
-    border-radius: 5px;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 15px;
 }
 
 .showPassword {
@@ -150,4 +143,11 @@ nav {
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
+}
+
+
+/* error css */
+
+small {
+    color: red;
 }

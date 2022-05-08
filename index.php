@@ -34,7 +34,7 @@ if (isset($_COOKIE['aid'])) {
 
 
 <body class="home-bg">
-    
+
     <!-- navbar -->
     <?php include 'navbar.php'; ?>
 
@@ -42,21 +42,21 @@ if (isset($_COOKIE['aid'])) {
     <div class="container mx-auto text-center   row main">
 
         <div class="col-lg-6 ">
-            <div class="card  mx-auto border border-warning p-3 " style="width: 18rem;">
-                <img src="./Assets/./image/./user-icon-free-18.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
+            <div class="background mx-auto p-3 border border-light " style="width: 18rem;">
+            <a href="user_registration.php"><img src="./assets/image/users.png" class="card-img-top" alt="..."></a>
+                <div class="card-body mt-4">
                     <h5 class="card-title">USERS</h5>
-                    <a href="user_registration.php" class="btn btn-warning">Click here</a>
+                    <a href="user_registration.php" class="btn btn-dark border-light">Click here</a>
                 </div>
             </div>
         </div>
 
         <div class="col-lg-6 ">
-            <div class="card  mx-auto border border-dark p-3" style="width: 18rem;">
-                <img src="./assets/image/Admin.png" class="card-img-top" alt="...">
+            <div class="background mx-auto border border-light p-3" style="width: 18rem;">
+                <a href="login.php"><img src="./assets/image/Admin.png" class="card-img-top" alt="..."></a>
                 <div class="card-body">
                     <h5 class="card-title">ADMIN</h5>
-                    <a href="login.php" class="btn btn-dark">Click here</a>
+                    <a href="login.php" class="btn btn-dark border-light">Click here</a>
                 </div>
             </div>
         </div>
