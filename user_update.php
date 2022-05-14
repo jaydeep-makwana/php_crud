@@ -193,7 +193,7 @@ if (isset($_POST['submit'])) {
 
 <!-- update form of user -->
     <div class="container mt-5 w-100">
-        <form method="post" class="form-bg-user p-3" enctype="multipart/form-data">
+        <form method="post" class="text-white border border-light  p-3" enctype="multipart/form-data">
             <h1 class="text-center">Update Your Details</h1>
 
             <div class="row">

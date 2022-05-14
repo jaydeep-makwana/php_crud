@@ -66,7 +66,7 @@ function arrChecked($name, $value, $show)
     </nav>
 
     <!--  form for add user -->
-    <div class="container mt-5 form-bg-admin w-100">
+    <div class="container mt-5 text-white border border-white w-100">
         <form method="post" enctype="multipart/form-data">
             <h1 class="text-center">Add User</h1>
 

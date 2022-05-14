@@ -189,7 +189,7 @@ if (isset($_POST['submit'])) {
 
     <!-- update form, update user's data by admin -->
     <div class="container w-100">
-        <form method="post" class="form-bg-admin mt-5  p-3" enctype="multipart/form-data">
+        <form method="post" class="text-white border border-light mt-5  p-3" enctype="multipart/form-data">
             <h1 class="text-center">Update Record </h1>
 
             <div class="row">

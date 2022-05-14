@@ -132,9 +132,15 @@ $assoc = mysqli_fetch_assoc($result);
 
 
     </nav>
+<?php
+//     $selectTable = "SELECT * FROM user";
+// $result = mysqli_query($conn, $selectTable);
 
 
-
+// while($assoc = mysqli_fetch_assoc($result)){
+//     echo $assoc['id'] . '<br>';
+// }
+?>
     <!--  show data of users  -->
     <div class="table-responsive ">
         <table class="table text-center">
@@ -163,6 +169,7 @@ $assoc = mysqli_fetch_assoc($result);
                 <?php
 
                 # fetch data from user table
+$result = mysqli_query($conn, $selectTable);
 
                 while ($myData = mysqli_fetch_assoc($result)) { ?>
                     <tr id="row<?php echo $myData['id']; ?>">

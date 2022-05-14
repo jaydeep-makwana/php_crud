@@ -51,7 +51,7 @@ function arrChecked($name, $value, $show)
     <?php include 'navbar.php'; ?>
 
     <!-- register form -->
-    <div class="container mt-5 form-bg-user w-100 ">
+    <div class="container mt-5  text-white border border-light w-100 ">
         <form method="post" enctype="multipart/form-data">
             <h1 class="text-center">Register</h1>
 

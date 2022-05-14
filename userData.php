@@ -77,7 +77,7 @@ if (!$myData) {
     <!-- show user's data in table -->
     <div class="table-responsive">
 
-        <table class="table table-responsive userData form-bg-user text-center p-2 mt-5 user-table">
+        <table class="table table-responsive userData text-white border border-light text-center p-2 mt-5 user-table">
 
             <tr>
                 <th colspan="2">
