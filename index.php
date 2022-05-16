@@ -45,7 +45,7 @@ if (isset($_COOKIE['aid'])) {
             <div class="background mx-auto p-3 border border-light " style="width: 18rem;">
             <a href="user_registration.php"><img src="./assets/image/users.png" class="card-img-top" alt="..."></a>
                 <div class="card-body mt-4">
-                    <h5 class="card-title">USERS</h5>
+                    <h5 class="card-title">USER</h5>
                     <a href="user_registration.php" class="btn btn-dark border-light">Click here</a>
                 </div>
             </div>

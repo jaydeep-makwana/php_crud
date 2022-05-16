@@ -3,7 +3,7 @@ include 'config.php';
 session_start();
 
 # user login logic
- 
+
 if (isset($_SESSION['id'])) {
     header('location:user_welcome.php');
 }
@@ -60,12 +60,11 @@ if (!$tblQuery) {
     $createTable = "CREATE TABLE  admin ( id int(10) NOT NULL AUTO_INCREMENT PRIMARY KEY, userName varchar(100) NOT NULL, password varchar(100) NOT NULL )";
     if (!mysqli_query($conn, $createTable)) {
         echo mysqli_errno($conn);
-
-        # insert data in admin table for admin login 
-        $insertData = "INSERT INTO `admin` (`userName`,`password`) VALUES('admin','123')";
-        if (!mysqli_query($conn,$insertData)) {
-            echo mysqli_error($conn);
-        }
+    }
+    # insert data in admin table for admin login 
+    $insertData = "INSERT INTO `admin` (`userName`,`password`) VALUES('admin','123')";
+    if (!mysqli_query($conn, $insertData)) {
+        echo mysqli_error($conn);
     }
 }
 
@@ -124,7 +123,7 @@ function setValue($value)
     <!-- user login form -->
     <div class="container mt-5 text-dark  mx-auto  row w-100">
         <div class="col-lg-4 login-form-bg mx-auto">
-            
+
             <form method="post">
 
                 <h1 class="text-center p-3">User Log in</h1>
