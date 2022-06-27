@@ -118,7 +118,7 @@ if (isset($_POST['submit'])) {
         if (mysqli_query($conn, $insertQuery) && $movefile) {
              ?>
    <script>
-       alert('you are successfully registerd');
+       alert('You are successfully registerd!!');
        location.replace('login.php');
    </script>
              <?php 

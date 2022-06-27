@@ -11,15 +11,6 @@ if (!isset($_SESSION['aid'])) {
     header('location:login.php');
 }
 
-# select data from admin table
-// $id = $_SESSION['aid'];
-// $selectTable = "SELECT * FROM admin WHERE id = $id";
-// $result = mysqli_query($conn, $selectTable);
-
-// if (!$result) {
-//     echo mysqli_error($conn);
-// }
-
 
 # user code
 
@@ -35,7 +26,7 @@ function checked($name, $value, $show)
 {
     if (isset($_POST[$name])) {
         if ($_POST[$name] == $value)
-        echo  $show;
+            echo  $show;
     }
 }
 
@@ -132,15 +123,7 @@ $assoc = mysqli_fetch_assoc($result);
 
 
     </nav>
-<?php
-//     $selectTable = "SELECT * FROM user";
-// $result = mysqli_query($conn, $selectTable);
-
-
-// while($assoc = mysqli_fetch_assoc($result)){
-//     echo $assoc['id'] . '<br>';
-// }
-?>
+  
     <!--  show data of users  -->
     <div class="table-responsive ">
         <table class="table text-center">
@@ -169,7 +152,7 @@ $assoc = mysqli_fetch_assoc($result);
                 <?php
 
                 # fetch data from user table
-$result = mysqli_query($conn, $selectTable);
+                $result = mysqli_query($conn, $selectTable);
 
                 while ($myData = mysqli_fetch_assoc($result)) { ?>
                     <tr id="row<?php echo $myData['id']; ?>">
@@ -207,7 +190,7 @@ $result = mysqli_query($conn, $selectTable);
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <script src="./Assets/./JS/delete.js"></script>
+    <script src="Assets/JS/delete.js"></script>
     <script src="./Assets/./JS/search.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>

@@ -18,6 +18,8 @@ if (isset($_POST['submit'])) {
 
     if (empty($email)) {
         $emailErr = " email required";
+    } elseif (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+        $emailErr = "invalid email";
     } elseif (empty($pass)) {
         $passwordErr = "password required";
     } else {
@@ -35,7 +37,7 @@ if (isset($_POST['submit'])) {
                 $passwordErr = "invalid password";
             }
         } else {
-            $emailErr = "invalid email";
+            $emailErr = "this email is not existing";
         }
     }
 }
@@ -137,7 +139,7 @@ function setValue($value)
                 <div class="form-group">
                     <label for="">Password</label>
                     <input class="form-control" type="password" id="password" name="password" value="<?php setValue('password'); ?>">
-                    <small class="red"><?php echo $passwordErr; ?></small>
+                    <small class="red bg-light"><?php echo $passwordErr; ?></small>
                 </div>
 
                 <div class="form-check showPassword">
