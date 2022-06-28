@@ -34,7 +34,7 @@ if (isset($_POST['submit'])) {
     $selectEmail = "SELECT * FROM user WHERE email = '$email' ";
     $result = mysqli_query($conn, $selectEmail);
     $email_exist = mysqli_num_rows($result);
-
+    $img_extension = ['jpg','jpeg','png','JPG','JPEG','PNG'];
 
     if (empty($_POST['fName'])) {
         $fNameErr = 'first name should be not empty';
@@ -92,6 +92,8 @@ if (isset($_POST['submit'])) {
         $hobbyErr = 'hobby should be not empty';
     } elseif (!file_exists($_FILES["file"]["tmp_name"])) {
         $fileErr = 'Choose image file to upload ';
+    } elseif (!in_array(pathinfo($_FILES["file"]["name"], PATHINFO_EXTENSION),$img_extension)) {
+        $fileErr = 'Choose file only in JPG, JPEG and PNG format';
     } elseif ($_FILES["file"]["size"] > 1000000) {
         $fileErr = 'image size should be less than 1 MB';
     } else {

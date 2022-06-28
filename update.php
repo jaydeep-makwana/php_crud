@@ -2,6 +2,14 @@
 include 'config.php';
 session_start();
 
+if (!isset($_SESSION['aid'])) {
+    $_SESSION['aid'] = $_COOKIE['aid'];
+}
+
+if (!isset($_SESSION['aid'])) {
+    header('location:login.php');
+}
+
 # get id from user's id
 $id = $_GET['update_id'];
 
