@@ -54,20 +54,16 @@ if (isset($_COOKIE['aid'])) {
     header('location:dashboard.php');
 }
 
-# select data form admin table and create table if not exist
-$selectTable = "SELECT * FROM admin ";
-$tblQuery = mysqli_query($conn, $selectTable);
+# create admin table if not exist
+$createTable = "CREATE TABLE IF NOT EXISTS admin ( id int(10) NOT NULL AUTO_INCREMENT PRIMARY KEY, userName varchar(100) NOT NULL, password varchar(100) NOT NULL )";
+if (!mysqli_query($conn, $createTable)) {
+    echo mysqli_errno($conn);
+}
 
-if (!$tblQuery) {
-    $createTable = "CREATE TABLE  admin ( id int(10) NOT NULL AUTO_INCREMENT PRIMARY KEY, userName varchar(100) NOT NULL, password varchar(100) NOT NULL )";
-    if (!mysqli_query($conn, $createTable)) {
-        echo mysqli_errno($conn);
-    }
-    # insert data in admin table for admin login 
-    $insertData = "INSERT INTO `admin` (`userName`,`password`) VALUES('admin','123')";
-    if (!mysqli_query($conn, $insertData)) {
-        echo mysqli_error($conn);
-    }
+# insert data in admin table for admin login 
+$insertData = "INSERT INTO `admin` (`userName`,`password`) VALUES('admin','123')";
+if (!mysqli_query($conn, $insertData)) {
+    echo mysqli_error($conn);
 }
 
 # admin login with session and cookie
@@ -78,7 +74,8 @@ if (isset($_POST['asubmit'])) {
 
         $loginErr = "username and password required";
     } else {
-
+        $selectTable = "SELECT * FROM admin ";
+        $tblQuery = mysqli_query($conn, $selectTable);
 
         $userName = $_POST['userName'];
         $password = $_POST['password'];

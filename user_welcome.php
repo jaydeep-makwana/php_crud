@@ -86,10 +86,9 @@ $welcome_msg = "Hello " . $myData['firstName'] . ", Welcome!!" ;
 
                             </div>
 
-                            <div class="modal-body">
-                                <h2><a href="user_delete.php?del_id=<?php echo $myData['id']; ?>" class="btn btn-danger">Delete Account</a></h2>
-                            </div>
-
+                            <!-- <div class="modal-body">
+                                <h2><a href="user_delete.php?del_id=<?php // echo $myData['id']; ?>" class="btn btn-danger">Delete Account</a></h2>
+                            </div> -->
 
                             <div class="modal-body">
                                 <h2><a href="user_logout.php" class="btn btn-danger">Log out</a></h2>

@@ -32,7 +32,6 @@ if (isset($_COOKIE['aid'])) {
     <title>HOME</title>
 </head>
 
-
 <body class="home-bg">
 
     <!-- navbar -->

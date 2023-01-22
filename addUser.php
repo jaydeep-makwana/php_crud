@@ -87,7 +87,7 @@ function arrChecked($name, $value, $show)
 
                     <div class="form-group">
                         <label for="">Age</label> <small> *<?php echo $ageErr; ?> </small>
-                        <input type="text" class="form-control" name="age" value="<?php setValue('age'); ?>">
+                        <input type="number" class="form-control" name="age" value="<?php setValue('age'); ?>">
                     </div>
 
 
@@ -128,7 +128,7 @@ function arrChecked($name, $value, $show)
 
                     <div class="form-group">
                         <label for="">Salary</label> <small> * <?php echo $salaryErr;  ?> </small>
-                        <input type="text" class="form-control" name="salary" value="<?php setValue('salary'); ?>">
+                        <input type="number" class="form-control" name="salary" value="<?php setValue('salary'); ?>">
                     </div>
 
 
@@ -140,7 +140,7 @@ function arrChecked($name, $value, $show)
 
                     <div class="form-group">
                         <label for="">Email</label> <small> * <?php echo $emailErr;  ?> </small>
-                        <input type="text" class="form-control" name="email" value="<?php setValue('email'); ?>">
+                        <input type="email" class="form-control" name="email" value="<?php setValue('email'); ?>">
                     </div>
 
                     <div class="form-group">

@@ -6,10 +6,7 @@ $fNameErr = $lNameErr  = $ageErr = $genErr = $depErr = $dojErr = $salaryErr = $e
 # insert data through user
 if (isset($_POST['submit'])) {
 
-    $selectTable = "SELECT * FROM user";
-
-    if (!mysqli_query($conn, $selectTable)) {
-        $createTable = "CREATE TABLE user (
+    $createTable = "CREATE TABLE IF NOT EXISTS user (
      id int(10) AUTO_INCREMENT not null primary key,
      firstName varchar(10) not null,
      lastName varchar(10) not null,
@@ -23,18 +20,18 @@ if (isset($_POST['submit'])) {
      hobby text not null,
      photo varchar(100) not null)";
 
-        if (!mysqli_query($conn, $createTable)) {
-            echo mysqli_error($conn);
-        }
+    if (!mysqli_query($conn, $createTable)) {
+        echo mysqli_error($conn);
     }
 
+
     $email = $_POST['email'];
-    $password= $_POST['password'];
+    $password = $_POST['password'];
 
     $selectEmail = "SELECT * FROM user WHERE email = '$email' ";
     $result = mysqli_query($conn, $selectEmail);
     $email_exist = mysqli_num_rows($result);
-    $img_extension = ['jpg','jpeg','png','JPG','JPEG','PNG'];
+    $img_extension = ['jpg', 'jpeg', 'png', 'JPG', 'JPEG', 'PNG'];
 
     if (empty($_POST['fName'])) {
         $fNameErr = 'first name should be not empty';
@@ -92,7 +89,7 @@ if (isset($_POST['submit'])) {
         $hobbyErr = 'hobby should be not empty';
     } elseif (!file_exists($_FILES["file"]["tmp_name"])) {
         $fileErr = 'Choose image file to upload ';
-    } elseif (!in_array(pathinfo($_FILES["file"]["name"], PATHINFO_EXTENSION),$img_extension)) {
+    } elseif (!in_array(pathinfo($_FILES["file"]["name"], PATHINFO_EXTENSION), $img_extension)) {
         $fileErr = 'Choose file only in JPG, JPEG and PNG format';
     } elseif ($_FILES["file"]["size"] > 1000000) {
         $fileErr = 'image size should be less than 1 MB';
@@ -118,12 +115,12 @@ if (isset($_POST['submit'])) {
 
         $insertQuery = "INSERT INTO user (`firstName`,`lastName`,`age`,`gender`,`department`,`date_of_join`,`salary`,`email`,`password`, `hobby`,`photo`) VALUES ('$firstName','$lastName','$age','$gender','$department ','$dateOfJoin','$salary ','$email','$password','$ArrToString','$imagePath')";
         if (mysqli_query($conn, $insertQuery) && $movefile) {
-             ?>
-   <script>
-       alert('You are successfully registerd!!');
-       location.replace('login.php');
-   </script>
-             <?php 
+?>
+            <script>
+                alert('You are successfully registerd!!');
+                location.replace('login.php');
+            </script>
+<?php
 
         } else {
             echo mysqli_error($conn);
@@ -137,10 +134,7 @@ if (isset($_POST['submit'])) {
 # insert data through admin
 if (isset($_POST['add_user'])) {
 
-    $selectTable = "SELECT * FROM user";
-
-    if (!mysqli_query($conn, $selectTable)) {
-        $createTable = "CREATE TABLE user (
+    $createTable = "CREATE TABLE IF NOT EXISTS user (
      id int(10) AUTO_INCREMENT not null primary key,
      firstName varchar(10) not null,
      lastName varchar(10) not null,
@@ -154,13 +148,12 @@ if (isset($_POST['add_user'])) {
      hobby text not null,
      photo varchar(100) not null)";
 
-        if (!mysqli_query($conn, $createTable)) {
-            echo mysqli_error($conn);
-        }
+    if (!mysqli_query($conn, $createTable)) {
+        echo mysqli_error($conn);
     }
- 
+
     $email = $_POST['email'];
-    $password= $_POST['password'];
+    $password = $_POST['password'];
 
     $selectEmail = "SELECT * FROM user WHERE email = '$email' ";
     $result = mysqli_query($conn, $selectEmail);
@@ -253,6 +246,3 @@ if (isset($_POST['add_user'])) {
         }
     }
 }
-  
-
-

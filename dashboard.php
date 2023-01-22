@@ -123,7 +123,7 @@ $assoc = mysqli_fetch_assoc($result);
 
 
     </nav>
-  
+
     <!--  show data of users  -->
     <div class="table-responsive ">
         <table class="table text-center">
