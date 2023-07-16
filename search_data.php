@@ -7,7 +7,6 @@ $decode = json_decode($search_value);
 $input = $decode->srch_input;
 $field = $decode->field;
 
-
 # search data from user table
 $serch_qry = "SELECT * FROM user WHERE $field LIKE '%$input%'";
 $result = mysqli_query($conn, $serch_qry);

@@ -11,9 +11,7 @@ if (!isset($_SESSION['aid'])) {
     header('location:login.php');
 }
 
-
 # user code
-
 # functions for set value in input field and keep checked radio button and checkbox
 function setValue($value)
 {
@@ -35,8 +33,6 @@ $result = mysqli_query($conn, $selectTable);
 $assoc = mysqli_fetch_assoc($result);
 
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -120,8 +116,6 @@ $assoc = mysqli_fetch_assoc($result);
                 </div>
                 <!-- modal finished -->
             </div>
-
-
     </nav>
 
     <!--  show data of users  -->
@@ -172,22 +166,12 @@ $assoc = mysqli_fetch_assoc($result);
                         <td class="table-danger"><button onclick="delete_data(<?php echo $myData['id']; ?>)" class="btn btn-danger">DELETE</button></td>
 
                     </tr>
-
-
                 <?php  }
-
-
                 ?>
-
             </tbody>
 
         </table>
     </div>
-
-
-
-
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="Assets/JS/delete.js"></script>

@@ -70,7 +70,6 @@ function checked($col_name, $value, $show)
 
 $fNameErr = $lNameErr  = $ageErr = $genErr = $depErr = $dojErr = $salaryErr = $emailErr = $passwordErr = $cPasswordErr = $hobbyErr = $fileErr = '';
 
-
 # update data of user by admin
 if (isset($_POST['submit'])) {
 
@@ -133,13 +132,11 @@ if (isset($_POST['submit'])) {
         $hobby = $_POST['hobby'];
 
         $ArrToString = implode(", ", $hobby);
-
         $target_dir = "assets/pics/";
 
         if (!file_exists($_FILES["file"]["tmp_name"])) {
             $imagePath = $fetch_array['photo'];
         } else {
-
             $imagePath = $target_dir . basename($_FILES['file']['name']);
         }
 
@@ -152,7 +149,6 @@ if (isset($_POST['submit'])) {
     }
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -194,7 +190,6 @@ if (isset($_POST['submit'])) {
 
     </nav>
 
-
     <!-- update form, update user's data by admin -->
     <div class="container w-100">
         <form method="post" class="text-white border border-light mt-5  p-3" enctype="multipart/form-data">
@@ -222,7 +217,6 @@ if (isset($_POST['submit'])) {
                         <small class="red"><?php echo $ageErr; ?></small>
                     </div>
 
-
                     <label for="">Gender
                         <div class="form-check">
                             <label for="" class="form-check-label">
@@ -237,7 +231,6 @@ if (isset($_POST['submit'])) {
                             </label>
                         </div>
                     </label>
-
 
                     <div class="form-ckeck">
                         <label for="department">Department
@@ -289,7 +282,6 @@ if (isset($_POST['submit'])) {
                         <label for="showPassword" class="form-check-label">show password</label>
                     </div>
 
-
                     <label for=""> Hobby
                         <small class="red"><?php echo $hobbyErr; ?></small>
 
@@ -314,7 +306,6 @@ if (isset($_POST['submit'])) {
                         </div>
 
                     </label>
-
 
                     <div>
                         <img src="<?php echo $fetch_array['photo']; ?>" width="120px" alt="">

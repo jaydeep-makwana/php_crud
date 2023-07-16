@@ -36,7 +36,6 @@ if (isset($_COOKIE['aid'])) {
 
     <!-- navbar -->
     <?php include 'navbar.php'; ?>
-
     <!-- main content -->
     <div class="container mx-auto text-center   row main">
 

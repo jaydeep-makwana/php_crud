@@ -18,7 +18,6 @@ $query = mysqli_query($conn, $select_data);
 $fetch_array = mysqli_fetch_assoc($query);
 $strToArr = explode(', ', $fetch_array['hobby']);
 
-
 function value($col_name, $name)
 {
     global $fetch_array;
@@ -72,7 +71,6 @@ function checked($col_name, $value, $show)
 $fNameErr = $lNameErr  = $ageErr = $genErr = $depErr = $dojErr = $salaryErr = $emailErr = $passwordErr = $cPasswordErr = $hobbyErr = $fileErr = '';
 
 if (isset($_POST['submit'])) {
-
 
     if (empty($_POST['fName'])) {
         $fNameErr = 'first name should be not empty';
@@ -156,7 +154,6 @@ if (isset($_POST['submit'])) {
 
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -218,7 +215,6 @@ if (isset($_POST['submit'])) {
                         <small class="red"><?php echo $ageErr; ?></small>
                     </div>
 
-
                     <label for="">Gender
                         <div class="form-check">
                             <label for="" class="form-check-label">
@@ -233,7 +229,6 @@ if (isset($_POST['submit'])) {
                             </label>
                         </div>
                     </label>
-
 
                     <div class="form-ckeck">
                         <label for="department">Department
@@ -260,7 +255,6 @@ if (isset($_POST['submit'])) {
                     </div>
 
                 </div>
-
 
                 <div class="col-lg-6  ">
 
@@ -312,7 +306,6 @@ if (isset($_POST['submit'])) {
 
                     </label>
 
-
                     <div>
                         <img src="<?php echo $fetch_array['photo']; ?>" width="120px" alt="">
                     </div>
@@ -331,7 +324,6 @@ if (isset($_POST['submit'])) {
 
         </form>
     </div>
-
 
     <script src="Assets/JS/signup_pass.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

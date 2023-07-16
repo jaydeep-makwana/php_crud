@@ -9,7 +9,6 @@ if (!isset($_SESSION['id'])) {
 if (!isset($_SESSION['id'])) {
     header('location:user_login.php');
 }
- 
 
 # get user's id by logged user
 $id = $_SESSION['id'];
@@ -25,9 +24,8 @@ $myData = mysqli_fetch_assoc($result);
 if (!$myData) {
     echo mysqli_error($conn);
 }
- 
-?>
 
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -40,7 +38,6 @@ if (!$myData) {
     <link rel="stylesheet" href="Assets/CSS/style.css">
     <title>Your _Details</title>
 </head>
-
 
 <body class="user-bg">
     <!-- navbar -->
@@ -159,8 +156,6 @@ if (!$myData) {
         </table>
 
     </div>
-
-
 
     <script>
         document.getElementById("showPass").addEventListener('click', show);

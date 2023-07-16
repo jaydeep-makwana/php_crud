@@ -42,9 +42,6 @@ if (isset($_POST['submit'])) {
     }
 }
 
-
-
-
 # admin login logic
 
 if (isset($_SESSION['aid'])) {
@@ -52,18 +49,6 @@ if (isset($_SESSION['aid'])) {
 }
 if (isset($_COOKIE['aid'])) {
     header('location:dashboard.php');
-}
-
-# create admin table if not exist
-$createTable = "CREATE TABLE IF NOT EXISTS admin ( id int(10) NOT NULL AUTO_INCREMENT PRIMARY KEY, userName varchar(100) NOT NULL, password varchar(100) NOT NULL )";
-if (!mysqli_query($conn, $createTable)) {
-    echo mysqli_errno($conn);
-}
-
-# insert data in admin table for admin login 
-$insertData = "INSERT INTO `admin` (`userName`,`password`) VALUES('admin','123')";
-if (!mysqli_query($conn, $insertData)) {
-    echo mysqli_error($conn);
 }
 
 # admin login with session and cookie
@@ -92,7 +77,6 @@ if (isset($_POST['asubmit'])) {
     }
 }
 
-
 function setValue($value)
 {
     if (isset($_POST[$value])) {
@@ -100,8 +84,6 @@ function setValue($value)
     }
 }
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -155,7 +137,6 @@ function setValue($value)
 
         </div>
 
-
         <div class="col-lg-4 login-form-bg mx-auto">
 
             <form method="post">
@@ -187,5 +168,4 @@ function setValue($value)
 
     <script src="Assets/JS/signin_pass.js"></script>
 </body>
-
 </html>

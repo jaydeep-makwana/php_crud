@@ -6,25 +6,6 @@ $fNameErr = $lNameErr  = $ageErr = $genErr = $depErr = $dojErr = $salaryErr = $e
 # insert data through user
 if (isset($_POST['submit'])) {
 
-    $createTable = "CREATE TABLE IF NOT EXISTS user (
-     id int(10) AUTO_INCREMENT not null primary key,
-     firstName varchar(10) not null,
-     lastName varchar(10) not null,
-     age text  ,
-     gender text not null,
-     department text not null,
-     date_of_join date not null,
-     salary int(10) not null,
-     email  varchar(100) not null,
-     password varchar(100) not null,
-     hobby text not null,
-     photo varchar(100) not null)";
-
-    if (!mysqli_query($conn, $createTable)) {
-        echo mysqli_error($conn);
-    }
-
-
     $email = $_POST['email'];
     $password = $_POST['password'];
 
@@ -127,9 +108,6 @@ if (isset($_POST['submit'])) {
         }
     }
 }
-
-
-
 
 # insert data through admin
 if (isset($_POST['add_user'])) {
