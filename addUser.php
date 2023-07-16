@@ -189,7 +189,7 @@ function arrChecked($name, $value, $show)
                     </div>
 
 
-                    <input type="submit" name="add_user" value="Add_User" class="btn btn-primary">
+                    <input type="submit" name="add_user" value="Add User" class="btn btn-primary">
                     <input type="reset" name="submit" value="Reset" class="btn btn-warning">
                     <a href="dashboard.php" class="btn btn-info">Back</a>
 

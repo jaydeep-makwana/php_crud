@@ -66,7 +66,6 @@ $assoc = mysqli_fetch_assoc($result);
                 <!-- searching input -->
                 <input class="form-control mr-sm-2 ml-3" id="search" placeholder="select any filed for search" disabled onkeyup="searchData()">
 
-
                 <!-- dropdowm for field -->
                 <div class="form-ckeck" width="5">
                     <select class="form-control" id="search_dropdown" onchange="placeholder()">

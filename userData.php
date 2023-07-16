@@ -130,7 +130,7 @@ if (!$myData) {
                 <td><?php echo $myData['email']; ?> </td>
             </tr>
 
-            <tr>
+            <!-- <tr>
                 <th>Password</th>
                 <td>
 
@@ -141,7 +141,7 @@ if (!$myData) {
                     <input type="text" class="form-control" id="userPassword" readonly>
 
                 </td>
-            </tr>
+            </tr> -->
 
             <tr>
                 <th>Hobbies</th>
@@ -157,10 +157,10 @@ if (!$myData) {
 
     </div>
 
-    <script>
+    <!-- <script>
         document.getElementById("showPass").addEventListener('click', show);
         let passValue = document.getElementById("userPassword");
-        let password = "<?php echo base64_decode($myData['password']); ?>";
+        let password = "<?php // echo base64_decode($myData['password']); ?>";
         let star = "";
         for (let index = 0; index < password.length; index++) {
             star = star + '*';
@@ -181,7 +181,7 @@ if (!$myData) {
             }
 
         }
-    </script>
+    </script> -->
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
